@@ -14,6 +14,8 @@ PAM или D-Bus-интерфейс fprintd. Состояние службы, п
 [Терминальные инструменты](docs/guides/headless-clients.md) ·
 [Установка на Arch Linux](packaging/arch/README.md)
 
+[Как участвовать](CONTRIBUTING.ru.md) · [Качество кода](CODE_QUALITY.ru.md) · [Лицензия GPL-2.0](LICENSE)
+
 Язык и стиль клиентских подсказок выбираются отдельно. Каталоги
 устанавливаются пакетами. См. [локализацию клиентов](docs/contracts/client-localization.md).
 

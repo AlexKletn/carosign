@@ -14,6 +14,8 @@ status of the service, providers, and devices.
 [Command-line tools](docs/guides/headless-clients.md) ·
 [Arch Linux installation](packaging/arch/README.md)
 
+[Contributing](CONTRIBUTING.md) · [Code quality](CODE_QUALITY.md) · [GPL-2.0 license](LICENSE)
+
 Clients let you choose the language and style of prompts independently.
 Translation catalogs are available as packages. See the
 [client localization guide](docs/contracts/client-localization.md).
