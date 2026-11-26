@@ -1,0 +1,49 @@
+@use "mixins";
+
+.inventory {
+  @include mixins.stack;
+  min-width: 0;
+  color: var(--color-surface-fg);
+  background-color: var(--color-surface-bg);
+}
+
+.inventory-content {
+  @include mixins.stack;
+  min-width: 0;
+  gap: 12px;
+  padding: 20px 24px;
+}
+
+.inventory-heading {
+  margin: 0;
+  font-size: 1.65em;
+  font-weight: 600;
+  white-space: normal;
+}
+
+.inventory-list { @include mixins.stack; }
+
+.provider { @include mixins.stack; }
+
+.provider + .provider,
+.inventory-list > .message + .provider {
+  margin-top: 16px;
+}
+
+.provider-header {
+  flex-wrap: wrap;
+  padding: 8px 0;
+}
+
+.provider-name {
+  min-width: 0;
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.provider-devices { @include mixins.stack; gap: 8px; }
+.inventory-list > .message, .provider-devices > .message { padding: 12px 0; }
+

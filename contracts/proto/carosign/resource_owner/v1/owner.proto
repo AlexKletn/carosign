@@ -1,0 +1,68 @@
+syntax = "proto3";
+package carosign.resource_owner.v1;
+
+import "carosign/common/v1/common.proto";
+import "carosign/broker_relay/v1/relay.proto";
+import "carosign/provider/v1/provider.proto";
+
+// Dedicated private SOCK_SEQPACKET channel between the supervisor, broker, and owner.
+// Requests require a durable fence for the full scope.
+message Prepare {
+  bytes request_id = 1; // 16 bytes forming a nonzero ID
+  bytes boot_id = 2; // 16 bytes forming the current boot’s nonzero ID
+  carosign.broker_relay.v1.Scope scope = 3;
+  repeated carosign.broker_relay.v1.Slot slots = 4; // 0..8, in SCM_RIGHTS order. Empty for an owner-managed lease.
+}
+message Prepared {
+  carosign.broker_relay.v1.Scope scope = 1;
+  repeated carosign.broker_relay.v1.Slot slots = 2;
+}
+message Response {
+  bytes request_id = 1;
+  bytes boot_id = 2;
+  oneof result {
+    Prepared prepared = 3; // exactly slots.len() SCM_RIGHTS descriptors
+    carosign.common.v1.Error refused = 4; // no SCM_RIGHTS descriptors
+  }
+}
+
+// An observation confirms neither physical quiescence nor resource release.
+message InspectQuiescence {
+  bytes request_id = 1;
+  bytes boot_id = 2;
+  carosign.broker_relay.v1.Scope scope = 3;
+}
+message OwnerControl {
+  bytes request_id = 1;
+  bytes boot_id = 2;
+  carosign.broker_relay.v1.Scope scope = 3;
+  // Absent for an InspectQuiescence packet.
+  carosign.provider.v1.ProviderFrame dispatch = 4;
+}
+message DispatchObservation {
+  bytes request_id = 1;
+  bytes command_id = 2;
+  bool confirmed = 3;
+}
+enum QuiescenceStage {
+  QUIESCENCE_STAGE_UNSPECIFIED = 0;
+  QUIESCENCE_DRAINING = 1;
+  QUIESCENCE_HARDWARE_UNCONFIRMED = 2;
+  QUIESCENCE_UNKNOWN = 3;
+  // Revokes descriptors issued by this owner for the lease. The durable fence
+  // remains required until other owners and operation completion are accounted for.
+  QUIESCENCE_LEASE_REVOKED = 4;
+  // The trusted owner acquired all hardware resources in the exclusive lease,
+  // confirmed revocation, and blocked new admissions using old descriptors.
+  // This supplies no operation outcome, data-change receipt, or session completion.
+  QUIESCENCE_EXCLUSIVE_LEASE_REVOKED = 5;
+  // The trusted owner confirmed hardware operation completion and full revocation
+  // of the exclusive lease. The mutation outcome requires separate confirmation.
+  QUIESCENCE_EXCLUSIVE_QUIESCED = 6;
+}
+message QuiescenceObservation {
+  bytes request_id = 1;
+  bytes boot_id = 2;
+  carosign.broker_relay.v1.Scope scope = 3;
+  QuiescenceStage stage = 4;
+}

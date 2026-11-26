@@ -1,0 +1,7 @@
+[Unit]
+Description=CaroSign — макет адаптера fprintd
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/carosign-fprintd-compat
+NoNewPrivileges=yes

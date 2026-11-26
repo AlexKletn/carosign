@@ -1,0 +1,61 @@
+$top-bar-height: 52px;
+$sidebar-width: 248px;
+$content-padding: 28px;
+$section-gutter: 24px;
+$section-column-width: 680px;
+$card-radius: 12px;
+$control-radius: 7px;
+$detail-size: 0.8667em;
+
+$system-defaults: (
+  color-scheme: dark,
+  font-family: "sans-serif",
+  font-size: 11.25pt,
+  mono-family: "monospace",
+  mono-size: 9.75pt,
+  window-radius: 0px,
+);
+
+$system-dark: (
+  window-background: #141414,
+  window-foreground: #efefef,
+  view-background: #1a222d,
+  view-foreground: #efefef,
+  selection-background: #383838,
+  selection-foreground: #f0f0f0,
+  accent: #8ab4f8,
+);
+
+$system-light: (
+  window-background: #f6f6f6,
+  window-foreground: #172331,
+  view-background: #ffffff,
+  view-foreground: #172331,
+  selection-background: #dddddd,
+  selection-foreground: #232323,
+  accent: #1e5ab8,
+);
+
+$dark: (
+  color-text-muted: #b0bed0,
+  color-status-ready: #7ce5bc,
+  color-status-warning: #ffc482,
+  color-border: #414c5a,
+  color-border-strong: #687587,
+  color-divider: #303c4c,
+  color-hover-overlay: linear-gradient(#ffffff12, #ffffff12),
+  color-pressed-overlay: linear-gradient(#ffffff20, #ffffff20),
+);
+
+$light: (
+  color-text-muted: #46596c,
+  color-status-ready: #096146,
+  color-status-warning: #8c4304,
+  color-border: #c5d0dc,
+  color-border-strong: #788699,
+  color-divider: #dce3eb,
+  color-hover-overlay: linear-gradient(#00000012, #00000012),
+  color-pressed-overlay: linear-gradient(#00000020, #00000020),
+);
+
+$transition-shadow: linear-gradient(90deg, transparent, #00000005 55%, #00000012);

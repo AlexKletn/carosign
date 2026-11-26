@@ -1,0 +1,9 @@
+<section class="provider">
+  <div class="line provider-header">
+    <h3 class="provider-name">{name}</h3>
+    <span class={status_class}>{status}</span>
+  </div>
+  <div class="provider-devices">
+    <slot name="devices"/>
+  </div>
+</section>

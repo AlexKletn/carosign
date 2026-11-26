@@ -1,0 +1,105 @@
+@use "mixins";
+@use "variables";
+
+$platform-width: variables.$section-column-width;
+
+.content.content-platform-compact,
+.content.content-platform-wide { padding: 0 0 24px; }
+
+.platform {
+  @include mixins.stack;
+  flex-shrink: 0;
+  min-width: 0;
+  gap: 28px;
+}
+
+@media (min-width: (variables.$sidebar-width + $platform-width)) {
+  .content-platform-wide .inventory-content,
+  .content-platform-wide .platform-summary {
+    width: $platform-width;
+    box-sizing: border-box;
+    align-self: center;
+  }
+}
+
+.panel.platform-summary {
+  min-width: 0;
+  padding: 16px 24px;
+  gap: 12px;
+  color: var(--color-window-fg);
+  background-color: transparent;
+}
+
+.platform-state {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.platform-state-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+.platform-state-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
+  white-space: normal;
+}
+
+.platform-service-status {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.platform-status-text { white-space: normal; overflow-wrap: anywhere; }
+
+.platform-status-mark {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 3px;
+  background-color: var(--color-text-muted);
+}
+
+.ready > .platform-status-mark { background-color: var(--color-status-ready); }
+.warning > .platform-status-mark { background-color: var(--color-status-warning); }
+
+.platform-counts {
+  @include mixins.stack;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-divider);
+}
+
+.platform-metric {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  min-width: 0;
+  gap: 12px;
+}
+
+.platform-metric-number { flex-shrink: 0; font-weight: 600; }
+
+.platform-metric-label {
+  color: var(--color-text-muted);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.platform-recovery {
+  @include mixins.stack;
+  align-items: start;
+  gap: 8px;
+}
+
+.platform-counts-hidden, .platform-hidden { display: none; }

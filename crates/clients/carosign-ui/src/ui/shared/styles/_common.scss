@@ -1,0 +1,14 @@
+@use "variables";
+
+.line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.label { font-weight: 600; }
+.value { color: var(--color-text-muted); }
+.status { font-size: variables.$detail-size; color: var(--color-text-muted); }
+.ready { color: var(--color-status-ready); }
+.warning { color: var(--color-status-warning); }

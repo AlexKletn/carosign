@@ -1,0 +1,44 @@
+@use "mixins";
+@use "variables";
+@use "common";
+@use "../shared/ui/button/button";
+@use "../shared/ui/input/input";
+@use "../shared/ui/choice/choice";
+@use "../shared/ui/panel/panel";
+@use "../shared/ui/select/select";
+@use "dashboard/dashboard";
+@use "window_controls";
+@use "../widgets/sidebar/sidebar";
+@use "../widgets/platform/platform";
+@use "../widgets/fingerprints/fingerprints";
+@use "../widgets/policies/policies";
+@use "../widgets/inventory/inventory";
+@use "../widgets/inventory/device/device";
+@use "../widgets/inventory/message/message";
+
+:root {
+  --color-window-bg: var(--obscur-sys-window-bg);
+  --color-window-fg: var(--obscur-sys-window-fg);
+  --color-surface-bg: var(--obscur-sys-view-bg);
+  --color-surface-fg: var(--obscur-sys-view-fg);
+  --color-selected-bg: var(--obscur-sys-selection-bg);
+  --color-selected-fg: var(--obscur-sys-selection-fg);
+  --color-focus-ring: var(--obscur-sys-accent);
+  font-family: var(--obscur-sys-font-family);
+  font-size: var(--obscur-sys-font-size);
+  @include mixins.palette(variables.$dark);
+}
+
+@media (prefers-color-scheme: light) {
+  :root { @include mixins.palette(variables.$light); }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --color-text-muted: var(--color-surface-fg);
+    --color-border: var(--color-surface-fg);
+    --color-divider: var(--color-surface-fg);
+    --color-border-strong: var(--color-surface-fg);
+    --color-focus-ring: var(--color-surface-fg);
+  }
+}

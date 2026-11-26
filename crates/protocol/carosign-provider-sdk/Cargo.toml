@@ -1,0 +1,11 @@
+[package]
+name = "carosign-provider-sdk"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+carosign-protocol.workspace = true
+prost.workspace = true
+# Clears opaque tokens when the SDK value is dropped. See specification 11.
+zeroize = "1.9.0"

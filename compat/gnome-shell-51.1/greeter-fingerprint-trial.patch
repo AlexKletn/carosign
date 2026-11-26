@@ -1,0 +1,23 @@
+--- a/js/gdm/authServicesLegacy.js
++++ b/js/gdm/authServicesLegacy.js
+@@ -369,7 +369,10 @@
+     _handleCanStartService(serviceName) {
++        if (serviceName === FINGERPRINT_SERVICE_NAME && !this._userName)
++            return false;
++
+         if (this._hasAnyCredentialManagerToken())
+             return this._credentialManagers[serviceName]?.token !== null;
+ 
+         return serviceName === this._selectedMechanism?.serviceName ||
+             (serviceName === FINGERPRINT_SERVICE_NAME &&
+             this._enabledMechanisms.some(m => m.serviceName === serviceName) &&
+@@ -414,9 +417,6 @@
+     }
+ 
+     _connectFingerprintManager() {
+-        if (!this._reauthOnly)
+-            return;
+-
+         this._fingerprintManager = FingerprintManager.getFingerprintManager();
+         this._fingerprintManager.connectObject(
+             'reader-type-changed', () => this._onFingerprintChanged(),

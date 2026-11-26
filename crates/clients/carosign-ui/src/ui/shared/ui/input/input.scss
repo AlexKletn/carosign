@@ -1,0 +1,15 @@
+@use "mixins";
+
+input, textarea {
+  @include mixins.control;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 7px 9px;
+  color: var(--color-surface-fg);
+  background-color: var(--color-surface-bg);
+
+  &:hover:not(:disabled) { border-color: var(--color-border-strong); }
+  &:focus:not(:disabled) { border-color: var(--color-focus-ring); }
+
+  &::part(placeholder) { color: var(--color-text-muted); }
+}

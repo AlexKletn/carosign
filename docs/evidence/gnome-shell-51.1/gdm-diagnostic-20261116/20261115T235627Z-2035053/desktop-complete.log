@@ -1,0 +1,84 @@
+Nov 16 02:58:15.696786 spinel gnome-shell[2028702]: Type GITypeInfo of property AccountsService.User::password-mode does not match return type GITypeInfo of getter get_password_mode. Falling back to slow path
+Nov 16 02:58:16.522905 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+Nov 16 02:58:16.684314 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+Nov 16 02:58:17.110200 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+Nov 16 02:58:17.530819 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+Nov 16 02:58:17.578185 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+Nov 16 02:58:17.967666 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+Nov 16 02:58:18.591309 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+Nov 16 02:58:19.032645 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+Nov 16 02:58:39.684196 spinel gnome-shell[2028702]: g_hash_table_lookup: assertion 'hash_table != NULL' failed
+Nov 16 02:58:39.753673 spinel gnome-shell[2028702]: Exception in callback for signal: reset: Gio.IOErrorEnum: Подключение прервано
+                                                    
+                                                    Stack trace:
+                                                      cancel@resource:///org/gnome/shell/gdm/userVerifier.js:153:45
+                                                      reset@resource:///org/gnome/shell/gdm/authPrompt.js:960:39
+                                                      _onReset@resource:///org/gnome/shell/gdm/authPrompt.js:679:14
+                                                      _init/<@resource:///org/gnome/shell/gdm/authPrompt.js:193:40
+                                                      _callHandlers@resource:///org/gnome/gjs/modules/core/_signals.js:130:42
+                                                      _emit@resource:///org/gnome/gjs/modules/core/_signals.js:119:10
+                                                      _connectAuthServices/</<@resource:///org/gnome/shell/gdm/userVerifier.js:417:44
+                                                      _handleSelectMechanism@resource:///org/gnome/shell/gdm/authServicesLegacy.js:99:18
+                                                      selectMechanism@resource:///org/gnome/shell/gdm/authServices.js:201:14
+                                                      selectMechanism/<@resource:///org/gnome/shell/gdm/userVerifier.js:119:25
+                                                      selectMechanism@resource:///org/gnome/shell/gdm/userVerifier.js:119:14
+                                                      selectMechanism@resource:///org/gnome/shell/gdm/authPrompt.js:941:33
+                                                      _selectAuthMechanism@resource:///org/gnome/shell/ui/unlockDialog.js:816:31
+                                                      _init/<@resource:///org/gnome/shell/ui/unlockDialog.js:733:18
+                                                      setActiveItem@resource:///org/gnome/shell/gdm/authMenuButton.js:414:14
+                                                      _onMechanismsChanged@resource:///org/gnome/shell/ui/unlockDialog.js:1041:34
+                                                      _init/<@resource:///org/gnome/shell/gdm/authPrompt.js:189:53
+                                                      _callHandlers@resource:///org/gnome/gjs/modules/core/_signals.js:130:42
+                                                      _emit@resource:///org/gnome/gjs/modules/core/_signals.js:119:10
+                                                      _onMechanismsChanged@resource:///org/gnome/shell/gdm/userVerifier.js:479:14
+                                                      async*_connectAuthServices/</<@resource:///org/gnome/shell/gdm/userVerifier.js:420:50
+                                                      beginVerification@resource:///org/gnome/shell/gdm/authServicesSSSDSwitchable.js:73:18
+                                                      async*begin@resource:///org/gnome/shell/gdm/userVerifier.js:101:25
+                                                      async*begin@resource:///org/gnome/shell/gdm/authPrompt.js:1043:28
+                                                      _onReset@resource:///org/gnome/shell/ui/unlockDialog.js:1012:26
+                                                      reset@resource:///org/gnome/shell/gdm/authPrompt.js:997:14
+                                                      _onReset@resource:///org/gnome/shell/gdm/authPrompt.js:679:14
+                                                      _init/<@resource:///org/gnome/shell/gdm/authPrompt.js:193:40
+                                                      _callHandlers@resource:///org/gnome/gjs/modules/core/_signals.js:130:42
+                                                      _emit@resource:///org/gnome/gjs/modules/core/_signals.js:119:10
+                                                      _connectAuthServices/</<@resource:///org/gnome/shell/gdm/userVerifier.js:417:44
+                                                      _connectUserVerifierSignals/<@resource:///org/gnome/shell/gdm/authServices.js:329:33
+                                                      @resource:///org/gnome/shell/ui/init.js:20:20
+                                                      
+Nov 16 02:58:39.763923 spinel gnome-shell[2028702]: Owner of volume monitor org.gtk.vfs.GoaVolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+Nov 16 02:58:39.765065 spinel gnome-shell[2028702]: Owner of volume monitor org.gtk.vfs.GPhoto2VolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+Nov 16 02:58:39.770106 spinel gnome-shell[2028702]: Owner of volume monitor org.gtk.vfs.AfcVolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+Nov 16 02:58:39.773096 spinel gnome-shell[2028702]: Owner of volume monitor org.gtk.vfs.MTPVolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+Nov 16 02:58:39.783995 spinel gnome-shell[2028702]: Owner of volume monitor org.gtk.vfs.UDisks2VolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+Nov 16 02:58:39.788512 spinel gnome-shell[2028702]: Failed to start gdm-password verification for user: Gio.IOErrorEnum: Подключение прервано
+                                                    
+                                                    Stack trace:
+                                                      _promisify/proto[asyncFunc]/</<@resource:///org/gnome/gjs/modules/core/overrides/Gio.js:492:45
+                                                      @resource:///org/gnome/shell/ui/init.js:20:20
+                                                      ### Promise created here: ###
+                                                      _startService@resource:///org/gnome/shell/gdm/authServices.js:453:42
+                                                      _startServices@resource:///org/gnome/shell/gdm/authServices.js:423:28
+                                                      beginVerification@resource:///org/gnome/shell/gdm/authServices.js:177:24
+                                                      begin@resource:///org/gnome/shell/gdm/userVerifier.js:101:25
+                                                      async*begin@resource:///org/gnome/shell/gdm/authPrompt.js:1043:28
+                                                      _onReset@resource:///org/gnome/shell/ui/unlockDialog.js:1012:26
+                                                      reset@resource:///org/gnome/shell/gdm/authPrompt.js:997:14
+                                                      _onReset@resource:///org/gnome/shell/gdm/authPrompt.js:679:14
+                                                      _init/<@resource:///org/gnome/shell/gdm/authPrompt.js:193:40
+                                                      _callHandlers@resource:///org/gnome/gjs/modules/core/_signals.js:130:42
+                                                      _emit@resource:///org/gnome/gjs/modules/core/_signals.js:119:10
+                                                      _connectAuthServices/</<@resource:///org/gnome/shell/gdm/userVerifier.js:417:44
+                                                      _connectUserVerifierSignals/<@resource:///org/gnome/shell/gdm/authServices.js:329:33
+                                                      @resource:///org/gnome/shell/ui/init.js:20:20
+                                                      
+Nov 16 02:58:39.975447 spinel gnome-shell[2028702]: Shutting down GNOME Shell
+Nov 16 02:58:40.009265 spinel gnome-shell[2028702]: JS ERROR: Error: incorrect pop
+                                                    popModal@resource:///org/gnome/shell/ui/main.js:752:15
+                                                    popModal@resource:///org/gnome/shell/ui/unlockDialog.js:1153:18
+                                                    _onDestroy@resource:///org/gnome/shell/ui/unlockDialog.js:1091:14
+                                                    _init/<@resource:///org/gnome/shell/ui/layout.js:243:26
+Nov 16 02:58:40.010886 spinel gnome-shell[2028702]: JS ERROR: Gio.IOErrorEnum: Подключение прервано
+                                                    cancel@resource:///org/gnome/shell/gdm/userVerifier.js:153:45
+                                                    destroy@resource:///org/gnome/shell/gdm/userVerifier.js:187:14
+                                                    _onDestroy@resource:///org/gnome/shell/gdm/authPrompt.js:245:28
+                                                    _init/<@resource:///org/gnome/shell/ui/layout.js:243:26

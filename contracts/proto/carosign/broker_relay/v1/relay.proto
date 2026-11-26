@@ -1,0 +1,68 @@
+syntax = "proto3";
+package carosign.broker_relay.v1;
+
+import "carosign/provider/v1/provider.proto";
+import "carosign/common/v1/common.proto";
+
+message Frame {
+  uint32 major = 1;
+  uint32 minor = 2;
+  uint64 seq = 3;
+  bytes worker_instance = 4;
+  uint64 device_epoch = 5;
+  oneof body {
+    Hello hello = 10;
+    Command command = 11;
+    Event event = 12;
+    Bind bind = 13;
+    BindResult bind_result = 14;
+    Control control = 15;
+    ControlResult control_result = 16;
+    CommandResult command_result = 17;
+  }
+}
+message Hello { bytes broker_instance = 1; bytes boot_id = 2; }
+message Owner {
+  bytes operation_id = 1;
+  bytes worker_instance = 2;
+  bytes authenticator_id = 3;
+  uint64 device_epoch = 4;
+}
+enum AccessMode { ACCESS_UNSPECIFIED = 0; EXCLUSIVE = 1; SHARED_READ = 2; MEDIATED = 3; }
+message Claim { bytes resource_id = 1; AccessMode mode = 2; }
+message Scope { bytes lease_id = 1; Owner owner = 2; repeated Claim claims = 3; }
+message Slot { bytes resource_id = 1; carosign.provider.v1.FdRole role = 2; }
+// Internal receipt for the trusted daemon’s private channel. Never send it to the provider.
+message MutationPermit { bytes lease_id = 1; bytes scope = 2; bytes mutation_id = 3; }
+message Command {
+  bytes request_id = 1;
+  carosign.provider.v1.ProviderFrame frame = 2;
+  MutationPermit mutation_permit = 3;
+}
+message CommandResult {
+  bytes request_id = 1;
+  oneof result { bool sent = 2; carosign.common.v1.Error refused = 3; }
+}
+message Event { carosign.provider.v1.ProviderFrame frame = 1; }
+message Bind {
+  bytes request_id = 1; Scope scope = 2; repeated Slot slots = 3;
+  carosign.provider.v1.ProviderFrame frame = 4;
+}
+message BindResult {
+  bytes request_id = 1;
+  oneof result { bool sent = 2; carosign.common.v1.Error refused = 3; }
+}
+message Cancel { Scope scope = 1; bytes cancel_command_id = 2; }
+message Revoke { Scope scope = 1; }
+message Control {
+  bytes request_id = 1;
+  oneof action { Cancel cancel = 2; Revoke revoke = 3; }
+}
+message ControlResult {
+  bytes request_id = 1;
+  oneof result {
+    bool cancel_sent = 2; bool revoked = 3; carosign.common.v1.Error refused = 4;
+    bool exclusive_revoked = 5;
+    bool exclusive_quiesced = 6;
+  }
+}

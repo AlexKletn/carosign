@@ -1,0 +1,4 @@
+<section class="fingerprint-message section-message">
+  <h2 class="fingerprint-message-title">{title}</h2>
+  <span class={detail_class}>{detail}</span>
+</section>

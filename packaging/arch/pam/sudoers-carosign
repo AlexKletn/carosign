@@ -1,0 +1,2 @@
+# Allow the biometric PAM adapter to write a terminal prompt.
+Defaults !pam_silent

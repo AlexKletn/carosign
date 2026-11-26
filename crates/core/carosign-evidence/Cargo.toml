@@ -1,0 +1,11 @@
+[package]
+name = "carosign-evidence"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+carosign-core.workspace = true
+carosign-engine.workspace = true
+zeroize = "1.9"
+sha2 = "0.10"

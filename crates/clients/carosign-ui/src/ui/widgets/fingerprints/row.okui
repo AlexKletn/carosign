@@ -1,0 +1,6 @@
+<li class="fingerprint-row">
+  <div class="fingerprint-icon-area">
+    <img class="fingerprint-icon" src="fingerprint.svg" alt=""/>
+  </div>
+  <span class="label fingerprint-row-text">{label}</span>
+</li>

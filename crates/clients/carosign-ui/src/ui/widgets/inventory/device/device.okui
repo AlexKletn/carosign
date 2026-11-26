@@ -1,0 +1,20 @@
+<div class="device" test-id={card_id} on:click=inventory_toggle_device>
+  <button class="device-toggle" test-id={button_id} aria-expanded={expanded}>
+    <img class="device-icon" src={icon} alt=""/>
+    {device}
+    <img class="device-chevron" src={chevron} alt=""/>
+  </button>
+  <div class="device-state">
+    <span class={status_class}>{status}</span>
+    <span class={reason_class}>{reason}</span>
+  </div>
+  <div class={disclosure_class}>
+    <span class="identifier">{identifier}</span>
+    <span class={operations_class}>{operations}</span>
+    <span class={detection_class}>{detection}</span>
+    <div class={action_class}>
+      <button disabled={action_disabled} test-id={action_id} on:click=inventory_device_action>{action_label}</button>
+      <span class={action_feedback_class}>{action_feedback}</span>
+    </div>
+  </div>
+</div>

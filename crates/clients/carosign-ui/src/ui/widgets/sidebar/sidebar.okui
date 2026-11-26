@@ -1,0 +1,54 @@
+<aside class="sidebar">
+  <header class="sidebar-title" on:pointerdown=window_move>{title}</header>
+  <nav class="navigation">
+    <button class={platform_class} on:click=show_platform test-id="platform-navigation">
+      <img class="nav-icon" src="platform.svg" alt=""/>
+      {platform_label}
+    </button>
+    <section class="nav-section">
+      <h2 class="nav-section-title">{registration_label}</h2>
+      <div class="nav-section-items">
+        <button class={fingerprints_class} on:click=show_fingerprints test-id="fingerprints-navigation">
+          <img class="nav-icon" src="fingerprint.svg" alt=""/>
+          {fingerprints_label}
+        </button>
+        <div class="nav-unavailable">
+          <button class="nav-item nav-item-placeholder" disabled test-id="face-navigation">
+            <img class="nav-icon" src="face.svg" alt=""/>
+            {face_label}
+          </button>
+          <button class="nav-item nav-item-placeholder" disabled test-id="iris-navigation">
+            <img class="nav-icon" src="iris.svg" alt=""/>
+            {iris_label}
+          </button>
+          <button class="nav-item nav-item-placeholder" disabled test-id="voice-navigation">
+            <img class="nav-icon" src="voice.svg" alt=""/>
+            {voice_label}
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="nav-section">
+      <h2 class="nav-section-title">{settings_label}</h2>
+      <div class="nav-section-items">
+        <button class={policies_class} on:click=show_policies test-id="policies-navigation">
+          <img class="nav-icon" src="policies.svg" alt=""/>
+          {policies_label}
+        </button>
+      </div>
+    </section>
+  </nav>
+  <footer class="sidebar-footer">
+    <div class="sidebar-footer-content">
+      <span class="footer-brand">{app_name}</span>
+      <div class="footer-service">
+        <span class="footer-status">{service_state}</span>
+        <button class="footer-restart" aria-label={restart_label} disabled={restart_disabled} on:click=policy_restart_service test-id="service-restart">
+          <img class="footer-restart-icon" src="restart.svg" alt=""/>
+          {restart_label}
+        </button>
+      </div>
+      <span class={restart_status_class}>{restart_status}</span>
+    </div>
+  </footer>
+</aside>

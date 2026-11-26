@@ -1,0 +1,41 @@
+pkgbase=carosign-locales
+pkgname=('carosign-locale-ru' 'carosign-style-w40k' 'carosign-style-tes' 'carosign-style-borg' 'carosign-style-soviet')
+pkgver=0.1.0
+pkgrel=4
+pkgdesc='Optional CaroSign language and style catalogs'
+arch=('any')
+license=('GPL-2.0-only')
+depends=('carosign')
+source=()
+sha256sums=()
+
+install_catalog() {
+    local relative=$1
+    install -Dm644 "$startdir/../../../locales/$relative" "$pkgdir/usr/share/carosign/locales/$relative"
+}
+
+package_carosign-locale-ru() {
+    pkgdesc='CaroSign Russian translations'
+    install_catalog base/ru/main.ftl
+}
+
+package_carosign-style-w40k() {
+    pkgdesc='CaroSign machine-spirit style (English and Russian)'
+    install_catalog styles/w40k/en/main.ftl
+    install_catalog styles/w40k/ru/main.ftl
+}
+
+package_carosign-style-tes() {
+    pkgdesc='CaroSign fantasy style (English)'
+    install_catalog styles/tes/en/main.ftl
+}
+
+package_carosign-style-borg() {
+    pkgdesc='CaroSign Collective style (English)'
+    install_catalog styles/borg/en/main.ftl
+}
+
+package_carosign-style-soviet() {
+    pkgdesc='CaroSign Soviet style (Russian)'
+    install_catalog styles/soviet/ru/main.ftl
+}

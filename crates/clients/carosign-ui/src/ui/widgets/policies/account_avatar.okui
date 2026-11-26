@@ -1,0 +1,4 @@
+<div class="policy-avatar">
+  <span>{initial}</span>
+  <img class={image_class} src={source} alt=""/>
+</div>

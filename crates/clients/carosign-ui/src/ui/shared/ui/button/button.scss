@@ -1,0 +1,19 @@
+@use "mixins";
+
+button {
+  @include mixins.control;
+  font-family: inherit;
+  font-size: inherit;
+  min-height: 22px;
+  padding: 8px 10px;
+  color: var(--color-surface-fg);
+  background-color: var(--color-surface-bg);
+
+  &:hover:not(:disabled) { background-image: var(--color-hover-overlay); }
+  &:active:not(:disabled) { background-image: var(--color-pressed-overlay); }
+  &:focus-visible {
+    border-color: var(--color-focus-ring);
+    outline: 1px solid var(--color-focus-ring);
+    outline-offset: -3px;
+  }
+}

@@ -1,0 +1,36 @@
+<node>
+  <interface name="net.reactivated.Fprint.Manager">
+    <method name="GetDevices">
+      <arg type="ao" direction="out"/>
+    </method>
+    <method name="GetDefaultDevice">
+      <arg type="o" direction="out"/>
+    </method>
+  </interface>
+  <interface name="org.freedesktop.DBus.Introspectable">
+    <method name="Introspect">
+      <arg type="s" direction="out"/>
+    </method>
+  </interface>
+  <interface name="org.freedesktop.DBus.Properties">
+    <method name="Get">
+      <arg type="s" direction="in"/>
+      <arg type="s" direction="in"/>
+      <arg type="v" direction="out"/>
+    </method>
+    <method name="GetAll">
+      <arg type="s" direction="in"/>
+      <arg type="a{sv}" direction="out"/>
+    </method>
+    <method name="Set">
+      <arg type="s" direction="in"/>
+      <arg type="s" direction="in"/>
+      <arg type="v" direction="in"/>
+    </method>
+    <signal name="PropertiesChanged">
+      <arg type="s"/>
+      <arg type="a{sv}"/>
+      <arg type="as"/>
+    </signal>
+  </interface>
+</node>

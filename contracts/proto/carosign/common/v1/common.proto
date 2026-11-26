@@ -1,0 +1,271 @@
+syntax = "proto3";
+package carosign.common.v1;
+
+// Canonical IDs are opaque, exactly 16 nonzero bytes unless a field says otherwise.
+// Validation rules live in implementation-v06/03-domain-types.md.
+message SubjectRef {
+  bytes authority_id = 1;
+  bytes subject_id = 2;
+}
+message AuthenticatorRef {
+  bytes authenticator_id = 1;
+  uint64 device_epoch = 2;
+}
+message EnrollmentRef {
+  bytes enrollment_id = 1;
+  bytes authenticator_id = 2;
+  uint64 generation = 3;
+}
+message SubjectSelector {
+  oneof selector {
+    bool current_subject = 1; // must be true
+    string account_hint = 2;  // untrusted; authority resolves
+    bytes opaque_authority_selector = 3; // max 256 bytes
+  }
+}
+enum Modality {
+  MODALITY_UNSPECIFIED = 0;
+  MODALITY_FINGERPRINT = 1;
+  MODALITY_FACE = 2;
+  MODALITY_IRIS = 3;
+  MODALITY_VOICE = 4;
+}
+enum VerificationPurpose {
+  PURPOSE_UNSPECIFIED = 0;
+  PURPOSE_SESSION_LOGIN = 1;
+  PURPOSE_SESSION_UNLOCK = 2;
+  PURPOSE_PRIVILEGED_ACTION = 3;
+  PURPOSE_SELF_CHECK = 4;
+  PURPOSE_KEY_OPERATION = 5;
+}
+enum TemplateCustody {
+  CUSTODY_UNSPECIFIED = 0;
+  CUSTODY_PLATFORM_MANAGED = 1;
+  CUSTODY_PROVIDER_MANAGED = 2;
+}
+enum InteractionMode {
+  INTERACTION_UNSPECIFIED = 0;
+  INTERACTION_TOUCH = 1;
+  INTERACTION_SWIPE = 2;
+  INTERACTION_UNDER_DISPLAY_OPTICAL = 3;
+  INTERACTION_LOOK_AT_CAMERA = 4;
+  INTERACTION_SPEAK = 5;
+}
+enum ProviderOperation {
+  PROVIDER_OPERATION_UNSPECIFIED = 0;
+  PROVIDER_VERIFY = 1;
+  PROVIDER_ENROLL = 2;
+  PROVIDER_REMOVE = 3;
+  PROVIDER_ENUMERATE = 4;
+  PROVIDER_QUERY_MUTATION = 5;
+}
+enum RecoveryMode {
+  RECOVERY_MODE_UNSPECIFIED = 0;
+  RECOVERY_NOT_SUPPORTED = 1;
+  RECOVERY_SAFE_STATE_QUERY = 2;
+  RECOVERY_PROVIDER_MANAGED = 3;
+}
+enum ErrorCode {
+  ERROR_UNSPECIFIED = 0;
+  ERROR_INVALID_MESSAGE = 1;
+  ERROR_UNSUPPORTED_VERSION = 2;
+  ERROR_UNEXPECTED_PHASE = 3;
+  ERROR_FRAME_TOO_LARGE = 4;
+  ERROR_FD_MISMATCH = 5;
+  ERROR_UNAUTHORIZED = 6;
+  ERROR_GRANT_REVOKED = 7;
+  ERROR_SCOPE_MISMATCH = 8;
+  ERROR_SUBJECT_UNKNOWN = 9;
+  ERROR_BUSY = 10;
+  ERROR_UNSUPPORTED = 11;
+  ERROR_UNAVAILABLE = 12;
+  ERROR_TIMEOUT = 13;
+  ERROR_STORE_UNAVAILABLE = 14;
+  ERROR_CORRUPT_STATE = 15;
+  ERROR_GENERATION_CONFLICT = 16;
+  ERROR_MUTATION_INDETERMINATE = 17;
+  ERROR_RECONCILIATION_REQUIRED = 18;
+  ERROR_EVIDENCE_INVALID = 19;
+  ERROR_EVIDENCE_UNVERIFIED = 20;
+  ERROR_RECIPIENT_MISMATCH = 21;
+  ERROR_WORKER_LOST = 22;
+  ERROR_RESOURCE_UNCERTAIN = 23;
+  ERROR_DEVICE_REMOVED = 24;
+  ERROR_BROKER_FAILED = 25;
+  ERROR_LIMIT_EXCEEDED = 26;
+  ERROR_CONFLICT = 27;
+  ERROR_INVALID_ARGUMENT = 28;
+  ERROR_INTERNAL = 29;
+  ERROR_CAPTURE_STORAGE_FULL = 30;
+  ERROR_DUPLICATE_SAMPLE = 31;
+}
+message Error {
+  ErrorCode code = 1;
+  string safe_message = 2; // <=256 UTF-8 bytes, no secrets
+}
+// Enrollment authentication is a provider capability, not a biometric matching policy.
+// The system policy must independently authorize management and credential step-up.
+enum EnrollmentAuthorizationMode {
+  ENROLL_AUTH_UNSPECIFIED = 0;
+  ENROLL_AUTH_NONE = 1;
+  ENROLL_AUTH_CHALLENGED = 2;
+}
+// Unknown never asserts that verification is free of persistent effects.
+message CapabilityDescriptor {
+  Modality modality = 1;
+  repeated ProviderOperation operations = 2;
+  TemplateCustody template_custody = 3;
+  repeated InteractionMode interaction_modes = 4;
+  RecoveryMode recovery_mode = 5;
+  string template_format_id = 6; // <=128 bytes
+  uint32 template_format_version = 7;
+  bool cancel_request_supported = 8;
+  reserved 9;
+  EnrollmentAuthorizationMode enrollment_authorization = 10; // required if PROVIDER_ENROLL
+  reserved "raw_capture_private_to_provider"; // v0.6.4: always provider-private, not a capability
+  repeated CaptureEventKind supported_events = 11;
+  repeated CaptureMethod capture_methods = 12;
+  SensorPlacement placement = 13;
+  DeclaredAssurance assurance = 14;
+  optional uint32 enrollment_stages = 15;
+  string display_name = 16;
+}
+enum UnavailabilityReason {
+  UNAVAILABILITY_REASON_UNSPECIFIED = 0;
+  UNAVAILABILITY_REASON_INVENTORY_ONLY = 1;
+  UNAVAILABILITY_REASON_PROVIDER_UNREACHABLE = 2;
+  UNAVAILABILITY_REASON_DEVICE_NOT_PUBLISHED = 3;
+  UNAVAILABILITY_REASON_PROVIDER_REPORTED_UNAVAILABLE = 4;
+  UNAVAILABILITY_REASON_EXECUTION_PROFILE_REJECTED = 5;
+  UNAVAILABILITY_REASON_MODALITY_MISMATCH = 6;
+  UNAVAILABILITY_REASON_UNSUPPORTED_CAPABILITIES = 7;
+  UNAVAILABILITY_REASON_READINESS_CHECK_UNCONFIGURED = 8;
+  UNAVAILABILITY_REASON_READINESS_CHECK_PENDING = 9;
+  UNAVAILABILITY_REASON_READINESS_CHECK_FAILED = 10;
+  UNAVAILABILITY_REASON_RESOURCE_FENCED = 11;
+  UNAVAILABILITY_REASON_DISABLED_BY_ADMINISTRATOR = 12;
+}
+message AuthenticatorDescriptor {
+  bytes authenticator_id = 1;
+  uint64 device_epoch = 2;
+  CapabilityDescriptor capabilities = 3;
+  bool available = 4;
+  // Set by the platform for client inventory. Providers leave this unset.
+  UnavailabilityReason unavailability_reason = 5;
+}
+message EnrollmentSummary {
+  EnrollmentRef enrollment = 1;
+  string label = 2; // <=64 UTF-8 bytes
+  bool pending_reconciliation = 3;
+  optional string original_label = 4; // compatibility finger designation when the display label changes
+}
+message BootDeadline {
+  bytes boot_id = 1; // 16 bytes, issued by trusted runtime
+  uint64 boottime_ns = 2;
+}
+
+enum CaptureAction {
+  CAPTURE_ACTION_UNSPECIFIED = 0;
+  PLACE = 1;
+  CENTER = 2;
+  MOVE = 3;
+  REMOVE = 4;
+  SWIPE = 5;
+  LOOK_AT = 6;
+  HOLD_STILL = 7;
+  IMPROVE_LIGHTING = 8;
+  ALIGN = 9;
+  SPEAK = 10;
+  SPEAK_LOUDER = 11;
+  REDUCE_NOISE = 12;
+}
+enum CaptureTarget {
+  CAPTURE_TARGET_UNSPECIFIED = 0;
+  FINGER = 1;
+  FACE = 2;
+  CAMERA = 3;
+  SCENE = 4;
+  EYE = 5;
+  VOICE = 6;
+  ENVIRONMENT = 7;
+}
+enum CaptureRetryReason {
+  CAPTURE_RETRY_REASON_UNSPECIFIED = 0;
+  POOR_QUALITY = 1;
+  PARTIAL_CAPTURE = 2;
+  SWIPE_TOO_SHORT = 3;
+  POOR_LIGHTING = 4;
+  OUT_OF_FRAME = 5;
+  MOTION = 6;
+  TOO_QUIET = 7;
+  BACKGROUND_NOISE = 8;
+  TOO_FAST = 9;
+}
+message CapturePrompt {
+  CaptureAction action = 1;
+  CaptureTarget target = 2;
+}
+message CaptureRetry {
+  optional CaptureRetryReason reason = 1;
+  CapturePrompt prompt = 2;
+}
+message AcceptedSamples {
+  uint32 accepted = 1;
+  uint32 required = 2;
+}
+message CaptureState {
+  CaptureTarget target = 1;
+  optional bool present = 2;
+  optional bool needed = 3;
+}
+message CaptureFeedback {
+  oneof kind {
+    CapturePrompt prompt = 1;
+    CaptureRetry capture_retry = 2;
+    uint32 percent = 3;
+    AcceptedSamples accepted_samples = 4;
+  }
+}
+
+
+enum CaptureEventKind {
+  CAPTURE_EVENT_KIND_UNSPECIFIED = 0;
+  CAPTURE_EVENT_PROMPT = 1;
+  CAPTURE_EVENT_RETRY = 2;
+  CAPTURE_EVENT_PROGRESS = 3;
+  CAPTURE_EVENT_STATE = 4;
+}
+
+enum CaptureMethod {
+  CAPTURE_METHOD_UNSPECIFIED = 0;
+  CAPTURE_METHOD_CAPACITIVE = 1;
+  CAPTURE_METHOD_OPTICAL = 2;
+  CAPTURE_METHOD_RGB = 3;
+  CAPTURE_METHOD_INFRARED = 4;
+  CAPTURE_METHOD_DEPTH = 5;
+  CAPTURE_METHOD_AUDIO = 6;
+}
+enum SensorPlacement {
+  SENSOR_PLACEMENT_UNSPECIFIED = 0;
+  SENSOR_PLACEMENT_UNDER_DISPLAY = 1;
+  SENSOR_PLACEMENT_SIDE_BUTTON = 2;
+  SENSOR_PLACEMENT_EXTERNAL = 3;
+}
+
+message DeclaredAssurance {
+  PresentationAttackDetection presentation_attack_detection = 1;
+}
+message PresentationAttackDetection {
+  PresentationAttackDetectionSupport support = 1;
+  repeated PresentationAttackType covered_attacks = 2;
+}
+enum PresentationAttackDetectionSupport {
+  PRESENTATION_ATTACK_DETECTION_SUPPORT_UNKNOWN = 0;
+  PRESENTATION_ATTACK_DETECTION_SUPPORT_UNSUPPORTED = 1;
+  PRESENTATION_ATTACK_DETECTION_SUPPORT_DECLARED = 2;
+}
+enum PresentationAttackType {
+  PRESENTATION_ATTACK_TYPE_UNSPECIFIED = 0;
+  PRESENTATION_ATTACK_TYPE_PRINTED_PHOTO = 1;
+  PRESENTATION_ATTACK_TYPE_SCREEN_REPLAY = 2;
+}

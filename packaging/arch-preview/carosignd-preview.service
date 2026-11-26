@@ -1,0 +1,7 @@
+[Unit]
+Description=CaroSign — макет биометрической службы
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/carosignd
+NoNewPrivileges=yes

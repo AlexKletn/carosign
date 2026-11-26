@@ -1,0 +1,243 @@
+syntax = "proto3";
+package carosign.provider.v1;
+import "carosign/common/v1/common.proto";
+
+// One ProviderFrame per AF_UNIX/SOCK_SEQPACKET packet.
+// max serialized size 65536 B; no 4-byte length prefix.
+// `worker_instance_id` omitted in first WorkerHello; after Initialize it is 16B.
+// `frame_seq` starts at 1 for each direction and advances exactly by one.
+message ProviderFrame {
+  uint32 major = 1;      // exactly 1
+  uint32 minor = 3;      // negotiated minor, v1.3 baseline 3
+  bytes worker_instance_id = 3;
+  uint64 frame_seq = 4;
+  bytes command_id = 5;  // exactly 16B on commands and their replies
+  bytes operation_id = 6; // 16B on operation-related frames
+  uint64 device_epoch = 7;
+  oneof payload {
+    WorkerHello worker_hello = 10;
+    Initialize initialize = 11;
+    Initialized initialized = 12;
+    BindAuthenticator bind_authenticator = 13;
+    AuthenticatorReady authenticator_ready = 14;
+    Describe describe = 15;
+    Described described = 16;
+    StartVerification start_verification = 20;
+    StartEnrollment start_enrollment = 21;
+    StartRemoval start_removal = 22;
+    QueryMutation query_mutation = 23;
+    RequestCancel request_cancel = 24;
+    PrepareEnrollmentChallenge prepare_enrollment_challenge = 25;
+    CommandAck command_ack = 30;
+    ProviderProgress provider_progress = 31;
+    VerificationOutcome verification_outcome = 32;
+    MutationOutcome mutation_outcome = 33;
+    QueryMutationResult query_mutation_result = 34;
+    CancelReceipt cancel_receipt = 35;
+    EnrollmentChallengeReady enrollment_challenge_ready = 36;
+    Quiesce quiesce = 40;
+    Quiesced quiesced = 41;
+    CloseAuthenticator close_authenticator = 42;
+    Shutdown shutdown = 43;
+    ProviderFault provider_fault = 90;
+  }
+}
+
+enum Feature {
+  FEATURE_UNSPECIFIED = 0;
+  FEATURE_BASIC_OPERATIONS = 1;
+  FEATURE_SAFE_MUTATION_QUERY = 2;
+  FEATURE_FD_TRANSFER = 3;
+  FEATURE_CAPTURE_FEEDBACK_V1 = 6;
+}
+message WorkerHello {
+  uint32 major = 1;
+  uint32 min_minor = 3; // platform requires negotiated minor >=3
+  uint32 max_minor = 3;
+  repeated Feature features = 4;
+  string implementation_version = 5; // informational only, <=64 bytes
+}
+message Initialize {
+  bytes worker_instance_id = 1;
+  uint32 selected_minor = 2;
+  bytes package_id = 3; // 16B, system selected
+  bytes profile_id = 4; // 16B, system selected
+  repeated Feature enabled_features = 5;
+}
+message Initialized {
+  bool ready_for_binding = 1;
+}
+enum FdRole {
+  FD_ROLE_UNSPECIFIED = 0;
+  FD_ROLE_DEVICE = 1;
+  FD_ROLE_EVENT = 2;
+  FD_ROLE_CONFIG = 3;
+  FD_ROLE_MEDIATED_SERVICE = 4; // Connected broker RPC socket, carosign.broker.v1
+}
+message FdSlot {
+  uint32 index = 1; // 0-based, must cover all SCM_RIGHTS entries exactly once
+  FdRole role = 2;
+  bytes resource_id = 3; // 16B nonzero; exact broker-approved ResourceId in lease
+}
+message BindAuthenticator {
+  carosign.common.v1.AuthenticatorRef authenticator = 1;
+  bytes profile_id = 2; // 16B
+  bytes lease_id = 3; // 16B; opaque to worker, not authority
+  repeated FdSlot fd_slots = 4; // SCM_RIGHTS order maps index; only place in v1 for FDs
+}
+message AuthenticatorReady {
+  carosign.common.v1.AuthenticatorRef authenticator = 1;
+  carosign.common.v1.CapabilityDescriptor capabilities = 2;
+}
+message Describe { carosign.common.v1.AuthenticatorRef authenticator = 1; }
+message Described { carosign.common.v1.CapabilityDescriptor capabilities = 1; }
+
+enum EnrollmentBindingKind {
+  ENROLLMENT_BINDING_UNSPECIFIED = 0;
+  ENROLLMENT_BINDING_PROVIDER_OPAQUE = 1;
+  ENROLLMENT_BINDING_SCOPED_VAULT = 2;
+}
+message EnrollmentBinding {
+  carosign.common.v1.EnrollmentRef enrollment = 1;
+  EnrollmentBindingKind kind = 2;
+  // Provider-created reference; not a token, not raw template bytes.
+  bytes provider_opaque_ref = 3; // <=4096, PROVIDER_OPAQUE only
+  // Provider's serialization/compatibility metadata, if applicable.
+  string format_id = 4; // <=128; optional for TA/chip enrollment
+  uint32 format_version = 5;
+  // Scoped vault lookup uses enrollment as an index through separately
+  // authorized mediated service. No general DB access is granted.
+}
+message StartVerification {
+  carosign.common.v1.AuthenticatorRef authenticator = 1;
+  carosign.common.v1.SubjectRef subject = 2;
+  carosign.common.v1.VerificationPurpose purpose = 3;
+  bytes challenge_ref = 4; // 16B reference, NOT raw token
+  bytes recipient_ref = 5; // 16B trusted recipient reference
+  repeated EnrollmentBinding permitted_enrollments = 6; // 1..configured max, current/authorized only
+}
+// A challenge preparation command is read-only with respect to persistent enrollment;
+// profiles for which this cannot be established MUST NOT advertise HAT enrollment.
+// Its correlation is the ProviderFrame.operation_id and command_id.
+message PrepareEnrollmentChallenge {
+  carosign.common.v1.AuthenticatorRef authenticator = 1;
+  carosign.common.v1.SubjectRef subject = 2;
+  bytes mutation_id = 3; // 16B, already PREPARED durably; never starts enrollment
+}
+message EnrollmentChallengeReady {
+  bytes mutation_id = 1; // 16B
+  bytes challenge = 2; // 1..64 bytes; actual Gatekeeper challenge representation is platform-specific
+  bytes challenge_ref = 3; // 16B reference to broker-verified active challenge session
+  uint64 validity_ms = 4; // bounded by platform policy; NOT an absolute trusted clock
+}
+message StartEnrollment {
+  carosign.common.v1.AuthenticatorRef authenticator = 1;
+  carosign.common.v1.SubjectRef subject = 2;
+  bytes mutation_id = 3; // 16B, always previously armed durably
+  string label = 4; // <=64 bytes
+  carosign.common.v1.EnrollmentRef replace = 5; // absent for new enrollment
+  EnrollmentBinding replace_binding = 6; // required iff replace present, exact same EnrollmentRef
+  bytes enrollment_authorization_ref = 7; // 16B, required iff ENROLL_AUTH_HAT_CHALLENGE
+  bytes enrollment_challenge_digest = 8; // SHA-256 32B, iff ENROLL_AUTH_HAT_CHALLENGE
+  carosign.common.v1.EnrollmentRef planned_enrollment = 9; // required v1.3 for NEW and REPLACE; system-assigned
+  // replace+replace_binding must be absent for NEW, present and identical for REPLACE.
+  // Never carry raw HAT or user credential on this channel.
+}
+message StartRemoval {
+  carosign.common.v1.AuthenticatorRef authenticator = 1;
+  carosign.common.v1.SubjectRef subject = 2;
+  bytes mutation_id = 3; // 16B
+  carosign.common.v1.EnrollmentRef enrollment = 4;
+  bytes provider_opaque_ref = 5; // <=4096 bytes; legacy mirrored value only for PROVIDER_OPAQUE
+  EnrollmentBinding enrollment_binding = 6; // REQUIRED v1.2, ref == enrollment; covers scoped vault
+}
+message QueryMutation {
+  carosign.common.v1.AuthenticatorRef authenticator = 1;
+  bytes mutation_id = 2; // 16B
+  bytes recovery_ref = 3; // <=4096 bytes; safe read-only query ONLY
+}
+message RequestCancel { bytes target_operation_id = 1; /* 16B */ }
+message CommandAck {
+  bool accepted = 1;
+  carosign.common.v1.Error rejection = 2; // required when accepted=false
+}
+enum ProgressKind {
+  PROGRESS_UNSPECIFIED = 0;
+  PROGRESS_PLACE_FINGER = 1;
+  PROGRESS_MOVE_FINGER = 2;
+  PROGRESS_REMOVE_FINGER = 3;
+  PROGRESS_RETRY = 4;
+  PROGRESS_CAPTURING = 5;
+  PROGRESS_WORKING = 6;
+}
+message ProviderProgress {
+  uint64 operation_sequence = 1; // starts 1 per operation
+  ProgressKind kind = 2;
+  uint32 percent = 3; // 0..100, only meaningful for capturing; other 0
+  carosign.common.v1.CaptureFeedback feedback = 4;
+  carosign.common.v1.CaptureState capture_state = 5;
+}
+enum VerificationStatus {
+  VERIFY_STATUS_UNSPECIFIED = 0;
+  VERIFY_MATCHED = 1;   // not accepted factor
+  VERIFY_NOT_MATCHED = 2;
+  VERIFY_NO_USABLE_SAMPLE = 3;
+  VERIFY_CANCELLED = 4;
+  VERIFY_FAILED = 5;
+}
+message VerificationOutcome {
+  VerificationStatus status = 1;
+  // Token/evidence are OPTIONAL for MATCHED. No evidence means provider assertion.
+  // Hardware proof requires independent verifier; all material remains restricted.
+  oneof evidence {
+    bytes evidence_ref = 2; // exactly 16B restricted reference
+    bytes opaque_token = 3; // max 16384 bytes; only on private worker channel
+  }
+  string evidence_format_id = 4; // <=128 bytes; not assurance
+  carosign.common.v1.Error error = 5;
+  carosign.common.v1.EnrollmentRef matched_enrollment = 6; // optional, must be in permitted_enrollments
+}
+enum MutationStatus {
+  MUTATION_STATUS_UNSPECIFIED = 0;
+  MUTATION_PROVIDER_COMPLETED = 1; // not durable registry commit
+  MUTATION_NO_CHANGE = 2;         // must be supported by safe no-effect proof
+  MUTATION_MAY_HAVE_OCCURRED = 3;
+  MUTATION_FAILED = 4;
+}
+message MutationOutcome {
+  bytes mutation_id = 1; // 16B
+  MutationStatus status = 2;
+  carosign.common.v1.EnrollmentRef enrollment = 3; // v1.3: MUST echo planned_enrollment on completed Enroll; checked by Runtime
+  bytes provider_opaque_ref = 4; // <=4096 bytes
+  bytes recovery_ref = 5; // <=4096 bytes
+  carosign.common.v1.Error error = 6;
+}
+enum QueryState {
+  QUERY_STATE_UNSPECIFIED = 0;
+  QUERY_CONFIRMED_PRESENT = 1;
+  QUERY_CONFIRMED_ABSENT = 2;
+  QUERY_UNKNOWN = 3;
+  QUERY_UNSUPPORTED = 4;
+}
+message QueryMutationResult {
+  bytes mutation_id = 1;
+  QueryState state = 2;
+  carosign.common.v1.EnrollmentRef enrollment = 3;
+  bytes provider_opaque_ref = 4;
+  carosign.common.v1.Error error = 5;
+}
+enum CancelStatus {
+  CANCEL_STATUS_UNSPECIFIED = 0;
+  CANCEL_REQUESTED = 1;
+  CANCEL_UNSUPPORTED = 2;
+  CANCEL_ALREADY_TERMINAL = 3;
+}
+message CancelReceipt { CancelStatus status = 1; }
+message Quiesce { carosign.common.v1.AuthenticatorRef authenticator = 1; }
+message Quiesced {
+  bool physical_quiesce_confirmed = 1; // worker assertion, broker verifies
+  carosign.common.v1.Error error = 2;
+}
+message CloseAuthenticator { carosign.common.v1.AuthenticatorRef authenticator = 1; }
+message Shutdown {}
+message ProviderFault { carosign.common.v1.Error error = 1; }

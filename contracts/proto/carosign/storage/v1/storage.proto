@@ -1,0 +1,196 @@
+syntax = "proto3";
+package carosign.storage.v1;
+import "carosign/common/v1/common.proto";
+
+// Durable metadata value encoding, not network IPC. Every record is wrapped
+// in versioned StoredValue; redb keys and index layout are in doc 10.
+message StoredValue {
+  uint32 schema_version = 1; // 3 for v0.6.6; v1/v2 require explicit migration
+  oneof value {
+    AuthenticatorRecord authenticator = 10;
+    EnrollmentRecord enrollment = 11;
+    MutationRecord mutation = 12;
+    EffectOutboxRecord outbox = 13;
+    IdempotencyRecord idempotency = 14;
+    ProviderStateRecord provider_state = 15;
+    PackageRecord package_record = 16;
+    ProtectedTemplateRecord template_blob = 17; // OPTIONAL platform vault only, not every enrollment
+    ProviderInstallationRecord provider_installation = 18; // schema v4 only
+  }
+}
+enum InstallationState { INSTALLATION_STATE_UNSPECIFIED = 0; INSTALLATION_ACTIVE = 1; INSTALLATION_REVOKED = 2; }
+enum InstallationFileRole { INSTALLATION_FILE_UNSPECIFIED = 0; INSTALLATION_POLICY = 1; INSTALLATION_MANIFEST = 2; INSTALLATION_PROFILE = 3; INSTALLATION_EXECUTABLE = 4; INSTALLATION_RUNTIME = 5; }
+message InstallationFile { string path = 1; InstallationFileRole role = 2; bytes verity_sha256 = 3; }
+message ProviderInstallationRecord {
+  bytes package_id = 1;
+  bytes provider_id = 2;
+  bytes profile_id = 3;
+  string package_name = 4;
+  string version = 5;
+  string profile_name = 6;
+  string version_dir = 7;
+  uint64 device = 8;
+  uint64 inode = 9;
+  uint32 signer_key_version = 10;
+  bytes signer_fingerprint = 11;
+  bytes key_policy_id = 12;
+  uint64 revision = 13;
+  InstallationState state = 14;
+  string policy_path = 15;
+  string manifest_path = 16;
+  string profile_path = 17;
+  string executable_path = 18;
+  repeated InstallationFile files = 19;
+}
+message PackageRecord {
+  string package_name = 1; // reverse-DNS <=128 ASCII bytes, canonical
+  bytes package_id = 2; // 16B, platform-assigned stable ID
+  bytes provider_id = 3; // 16B, platform-assigned stable implementation family
+  string installed_version = 4; // <=64 bytes, empty if uninstalled
+  repeated RegisteredProfile approved_profiles = 5; // stable profile mappings
+}
+message RegisteredProfile {
+  string profile_name = 1; // canonical <=128 ASCII bytes
+  bytes profile_id = 2; // 16B system assigned
+}
+// Vault record is never a matcher input inside Runtime/Core.
+// Only a provider-authorized storage adapter may interpret plaintext.
+message ProtectedTemplateRecord {
+  // Identity mirrors, MUST equal canonical redb key enrollment_id[16] || generation(u64 BE).
+  // On read mismatch is CorruptRecord; these fields are NOT a secondary primary key.
+  bytes enrollment_id = 1; // exactly 16B nonzero
+  uint64 generation = 2; // >= 1
+  bytes key_id = 3; // 16B stable key reference, no key material
+  string format_id = 4; // <=128 bytes
+  uint32 format_version = 5;
+  bytes nonce = 6; // 12 fresh bytes for AES-256-GCM
+  bytes ciphertext_and_tag = 7; // encrypted bytes with 16-byte GCM tag
+}
+message AuthenticatorRecord {
+  bytes authenticator_id = 1; // 16
+  bytes provider_id = 2; // 16
+  bytes profile_id = 3; // 16
+  bytes hardware_identity_digest = 4; // 32, stable digest of approved descriptor
+  uint64 current_epoch = 5;
+  bool available = 6;
+}
+enum EnrollmentStatus {
+  ENROLLMENT_STATUS_UNSPECIFIED = 0;
+  ENROLLMENT_ACTIVE = 1;
+  ENROLLMENT_PENDING_RECONCILIATION = 2;
+  ENROLLMENT_UNAVAILABLE = 3;
+}
+// Durable registry custody discriminator. Do not infer from ref length or device type.
+// Independent of common.TemplateCustody, which describes provider capability.
+enum StoredBindingKind {
+  STORED_BINDING_KIND_UNSPECIFIED = 0;
+  STORED_BINDING_PROVIDER_OPAQUE = 1;
+  STORED_BINDING_SCOPED_VAULT = 2;
+}
+message EnrollmentRecord {
+  carosign.common.v1.EnrollmentRef enrollment = 1;
+  carosign.common.v1.SubjectRef subject = 2;
+  string label = 3; // max 64 bytes
+  EnrollmentStatus status = 4;
+  bytes provider_opaque_ref = 5; // <=4096 bytes
+  string template_format_id = 6; // <=128 bytes
+  uint32 template_format_version = 7;
+  StoredBindingKind binding_kind = 8; // mandatory v3; exact provider adapter mapping
+  optional string display_label = 9; // <=64 UTF-8 bytes, independent of original label
+}
+enum MutationPhase {
+  MUTATION_PHASE_UNSPECIFIED = 0;
+  MUTATION_PREPARED = 1;
+  MUTATION_DISPATCH_ARMED = 2;
+  MUTATION_PROVIDER_OBSERVED = 3;
+  MUTATION_REGISTRY_COMMITTED = 4;
+  MUTATION_COMPLETED = 5;
+  MUTATION_NEEDS_RECONCILIATION = 6;
+  MUTATION_NO_CHANGE = 7;
+}
+enum MutationKind {
+  MUTATION_KIND_UNSPECIFIED = 0;
+  MUTATION_ENROLL = 1;
+  MUTATION_REMOVE = 2;
+}
+enum MutationTerminalOutcome {
+  MUTATION_TERMINAL_OUTCOME_UNSPECIFIED = 0;
+  MUTATION_TERMINAL_COMMITTED = 1;
+  MUTATION_TERMINAL_NO_CHANGE = 2;
+}
+// Canonical immutable logical reconciliation plan. It does not contain biometric
+// templates or assert independently verified physical hardware state.
+message BindingSnapshot {
+  carosign.common.v1.EnrollmentRef enrollment = 1;
+  carosign.common.v1.SubjectRef subject = 2;
+  bytes provider_ref_digest = 3; // SHA-256 32B of the exact approved opaque ref
+  string format_id = 4; // <=128B; included in canonical comparison
+  uint32 format_version = 5;
+  StoredBindingKind binding_kind = 6; // mandatory v3; part of scope digest
+}
+enum PlannedTransition {
+  PLANNED_TRANSITION_UNSPECIFIED = 0;
+  PLANNED_ENROLL_NEW = 1;
+  PLANNED_ENROLL_REPLACE = 2;
+  PLANNED_REMOVE = 3;
+}
+message MutationPlanRecord {
+  PlannedTransition transition = 1;
+  bytes new_enrollment_id = 2; // exactly 16B for enroll; empty for remove
+  uint64 new_generation = 3; // >=1 for enroll; zero for remove
+  repeated BindingSnapshot pre_bindings = 4; // complete affected scope, sorted by enrollment ID
+  bytes affected_scope_digest = 5; // SHA-256 of canonical v3 scope, transition and snapshots
+  carosign.common.v1.EnrollmentRef old_target = 6; // mandatory REPLACE/REMOVE, absent NEW; matches MutationRecord.target_enrollment
+  optional string requested_label = 7; // v4: exact enrollment label, <=64 bytes; absent for removal
+  // Desired predicates: new ID/generation exists for ENROLL, old absent for
+  // REPLACE/REMOVE; new provider opaque ref is unknown before hardware work.
+  // A trusted independent physical witness is mandatory to reconcile after loss.
+}
+message MutationRecord {
+  bytes mutation_id = 1; // 16
+  bytes operation_id = 2; // 16
+  carosign.common.v1.SubjectRef subject = 3;
+  bytes authenticator_id = 4; // 16
+  uint64 expected_generation = 5;
+  MutationKind kind = 6;
+  MutationPhase phase = 7;
+  bytes worker_instance_id = 8; // 16 when armed
+  uint64 device_epoch = 9;
+  bytes command_id = 10; // 16 when armed
+  bytes recovery_ref = 11; // <=4096
+  carosign.common.v1.EnrollmentRef target_enrollment = 12; // for remove/replace
+  bytes provider_observation_digest = 13; // 32 when observed
+  // MUST be set to COMMITTED or NO_CHANGE iff phase == MUTATION_COMPLETED.
+  // MUST be UNSPECIFIED in all other phases, including MUTATION_NO_CHANGE.
+  MutationTerminalOutcome terminal_outcome = 14;
+  MutationPlanRecord plan = 15; // REQUIRED from PREPARED onward, immutable
+}
+enum EffectPhase {
+  EFFECT_PHASE_UNSPECIFIED = 0;
+  EFFECT_PLANNED = 1;
+  EFFECT_ARMED = 2;
+  EFFECT_OBSERVED = 3;
+  EFFECT_RECONCILIATION_REQUIRED = 4;
+}
+message EffectOutboxRecord {
+  bytes operation_id = 1; // 16
+  uint64 transition_index = 2;
+  uint32 effect_position = 3;
+  bytes command_id = 4; // 16 for provider effect
+  EffectPhase phase = 5;
+  bytes mutation_id = 6; // 16 for mutation effect
+}
+message IdempotencyRecord {
+  bytes caller_binding_digest = 1; // 32
+  bytes idempotency_key = 2; // 16
+  bytes normalized_request_digest = 3; // 32
+  bytes operation_id = 4; // 16
+  bytes mutation_id = 5; // 16 for mutation
+}
+message ProviderStateRecord {
+  bytes package_id = 1; // 16
+  bytes authenticator_id = 2; // 16
+  string format_id = 3;
+  uint32 format_version = 4;
+  bytes opaque_state_ref = 5; // <=4096
+}

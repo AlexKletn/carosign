@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <action id="org.carosign.policy.manage">
+    <description>Manage CaroSign access policy</description>
+    <description xml:lang="ru">Управление политикой доступа CaroSign</description>
+    <message>Administrator authentication is required to manage CaroSign access policy</message>
+    <message xml:lang="ru">Для управления политикой доступа CaroSign нужна аутентификация администратора</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/carosign-config</annotate>
+    <annotate key="org.freedesktop.policykit.exec.argv1">policy-admin</annotate>
+  </action>
+  <action id="org.carosign.devices.manage">
+    <description>Manage CaroSign devices</description>
+    <description xml:lang="ru">Управление устройствами CaroSign</description>
+    <message>Administrator authentication is required to change a CaroSign device</message>
+    <message xml:lang="ru">Для изменения состояния устройства CaroSign нужны права администратора</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/carosign-config</annotate>
+    <annotate key="org.freedesktop.policykit.exec.argv1">device-admin</annotate>
+  </action>
+</policyconfig>

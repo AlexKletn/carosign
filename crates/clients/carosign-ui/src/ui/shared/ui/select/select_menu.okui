@@ -1,0 +1,6 @@
+<div class={menu_class} on:pointerdown=select_keep_open>
+  <div class={options_class}>
+    <slot name="options"/>
+  </div>
+  <span class={hint_class}>{hint}</span>
+</div>

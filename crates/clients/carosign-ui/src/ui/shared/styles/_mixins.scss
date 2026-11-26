@@ -1,0 +1,33 @@
+@use "variables";
+
+@mixin stack {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin palette($colors) {
+  @each $property, $value in $colors {
+    --#{$property}: #{$value};
+  }
+}
+
+@mixin control {
+  border: 1px solid var(--color-border);
+  border-radius: variables.$control-radius;
+
+  &:focus { outline: none; }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+}
+
+@mixin top-bar {
+  display: flex;
+  flex: 0 0 auto;
+  min-height: variables.$top-bar-height;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: 1.2em;
+  font-weight: 600;
+}

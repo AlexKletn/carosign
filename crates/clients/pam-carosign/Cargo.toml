@@ -1,0 +1,19 @@
+[package]
+name = "pam-carosign"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+carosign-l10n.workspace = true
+carosign-runtime.workspace = true
+carosign-linux-ipc.workspace = true
+carosign-protocol.workspace = true
+libc.workspace = true
+
+[dev-dependencies]
+libc.workspace = true
+prost.workspace = true

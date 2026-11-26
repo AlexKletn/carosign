@@ -1,0 +1,35 @@
+# Preview package for installation testing on a separate system.
+pkgname=carosign-preview
+pkgver=0.0.0
+pkgrel=1
+pkgdesc='Дорелизный макет CaroSign для проверки упаковки'
+arch=('aarch64')
+license=('GPL-2.0-only')
+depends=('glibc' 'gcc-libs' 'dbus' 'pam' 'systemd')
+options=('!strip' '!debug')
+source=()
+sha256sums=()
+
+package() {
+    local input=${CAROSIGN_PREVIEW_BUILD_DIR:?Укажите абсолютный CAROSIGN_PREVIEW_BUILD_DIR}
+    local project=${CAROSIGN_PREVIEW_PROJECT_DIR:?Укажите абсолютный CAROSIGN_PREVIEW_PROJECT_DIR}
+    local name
+    [[ $input = /* && $project = /* ]] || return 1
+    for name in carosignd carosign-broker carosignctl carosign-fprintd-compat; do
+        install -Dm755 "$input/$name" "$pkgdir/usr/bin/$name"
+    done
+    install -Dm755 "$input/libpam_carosign.so" "$pkgdir/usr/lib/security/pam_carosign.so"
+    for name in carosignd-preview.service carosign-fprintd-preview.service; do
+        install -Dm644 "$project/packaging/arch-preview/$name" "$pkgdir/usr/lib/systemd/system/$name"
+    done
+    install -Dm644 "$project/packaging/arch-preview/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+    # Verify installed files relative to the target system root.
+    (
+        cd "$pkgdir"
+        sha256sum usr/bin/carosignd usr/bin/carosign-broker usr/bin/carosignctl \
+            usr/bin/carosign-fprintd-compat usr/lib/security/pam_carosign.so \
+            usr/lib/systemd/system/carosignd-preview.service \
+            usr/lib/systemd/system/carosign-fprintd-preview.service \
+            > "usr/share/doc/$pkgname/SHA256SUMS"
+    )
+}

@@ -1,0 +1,6 @@
+<section class="policy-access section-message">
+  <h2 class="policy-access-title">{title}</h2>
+  <span class="value">{description}</span>
+  <button class="policy-primary" disabled={pending} on:click=policy_unlock test-id="policy-unlock">{unlock_label}</button>
+  <span class={status_class}>{status}</span>
+</section>

@@ -1,0 +1,23 @@
+pkgname=carosign-ui
+pkgver=0.1.0
+pkgrel=35
+pkgdesc='Desktop client for CaroSign'
+arch=('x86_64' 'aarch64')
+license=('GPL-2.0-only')
+depends=('carosign>=0.1.0-8' 'glibc' 'libgcc' 'dbus' 'fontconfig' 'ttf-dejavu' 'libxkbcommon' 'wayland' 'libx11' 'libxcb' 'vulkan-icd-loader' 'vulkan-driver')
+optdepends=('carosign-locale-ru: Russian interface' 'glib2: desktop appearance queries' 'accountsservice: desktop account avatars')
+conflicts=('carosign-monitor' 'carosign-gtk')
+replaces=('carosign-monitor' 'carosign-gtk')
+options=('!strip' '!debug')
+source=()
+sha256sums=()
+
+package() {
+    local input=${CAROSIGN_BUILD_DIR:?Set the build directory}
+    local project=${CAROSIGN_PROJECT_DIR:?Set the project directory}
+    local client="$project/crates/clients/carosign-ui"
+    install -Dm755 "$input/carosign-ui" "$pkgdir/usr/bin/carosign-ui"
+    install -Dm644 "$client/org.carosign.Ui.desktop" \
+        "$pkgdir/usr/share/applications/org.carosign.Ui.desktop"
+    install -Dm644 "$client/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+}

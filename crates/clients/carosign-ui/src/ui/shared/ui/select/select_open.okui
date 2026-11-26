@@ -1,0 +1,6 @@
+<div class="select-open-anchor">
+  <div class={surface_class} on:pointerdown=select_keep_open>
+    <slot name="search"/>
+    <slot name="menu"/>
+  </div>
+</div>

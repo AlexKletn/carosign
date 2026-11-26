@@ -1,0 +1,54 @@
+# Template for the local snapshot produced by create-arch-source.sh.
+pkgname=carosign
+pkgver=0.1.0
+pkgrel=6
+pkgdesc='CaroSign — биометрическая платформа и клиентские адаптеры Linux'
+arch=('x86_64' 'aarch64')
+license=('GPL-2.0-only')
+depends=('glibc' 'libgcc' 'dbus' 'pam' 'systemd')
+optdepends=('polkit: graphical administration of access policy')
+makedepends=('rust' 'protobuf' 'pkgconf')
+backup=('etc/carosign/carosignd.conf')
+# The Cargo profile already strips debug information.
+options=('!strip' '!debug')
+source=("$pkgname-$pkgver.tar.gz")
+# The snapshot script inserts the SHA-256 checksum of its source archive.
+sha256sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo build --frozen --release -p carosignd -p carosign-broker \
+        -p carosignctl -p carosign-fprintd-compat -p pam-carosign
+}
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    cargo test --frozen --workspace
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    local name build_dir=${CARGO_TARGET_DIR:-target}/release
+    for name in carosignd carosign-broker carosignctl carosign-config carosign-fprintd-compat; do
+        install -Dm755 "$build_dir/$name" "$pkgdir/usr/bin/$name"
+    done
+    install -Dm755 "$build_dir/libpam_carosign.so" "$pkgdir/usr/lib/security/pam_carosign.so"
+    for name in carosignd.service carosign-fprintd.service; do
+        install -Dm644 "packaging/systemd/$name" "$pkgdir/usr/lib/systemd/system/$name"
+    done
+    install -Dm644 packaging/systemd/50-carosign.preset \
+        "$pkgdir/usr/lib/systemd/system-preset/50-carosign.preset"
+    install -Dm644 packaging/systemd/carosign-fprintd.conf "$pkgdir/usr/share/dbus-1/system.d/carosign-fprintd.conf"
+    install -Dm644 packaging/polkit/org.carosign.policy \
+        "$pkgdir/usr/share/polkit-1/actions/org.carosign.policy"
+    install -Dm600 packaging/systemd/carosignd.conf "$pkgdir/etc/carosign/carosignd.conf"
+    install -Dm644 crates/clients/carosign-l10n/locales/en.ftl "$pkgdir/usr/share/carosign/locales/base/en/main.ftl"
+    install -Dm644 packaging/systemd/README.md "$pkgdir/usr/share/doc/$pkgname/systemd.md"
+    install -Dm644 docs/contracts/linux-provider-profile.md "$pkgdir/usr/share/doc/$pkgname/linux-provider-profile.md"
+    install -Dm644 packaging/arch/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}

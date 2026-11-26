@@ -1,0 +1,25 @@
+[package]
+name = "carosign-mock-provider"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[features]
+ssh-mock = []
+
+[dependencies]
+carosign-protocol = { path = "../../protocol/carosign-protocol" }
+carosign-provider-sdk = { path = "../../protocol/carosign-provider-sdk" }
+libc = "0.2"
+prost = "0.11.9"
+
+[dev-dependencies]
+carosign-linux-ipc = { path = "../../linux/carosign-linux-ipc" }
+carosign-engine = { path = "../../core/carosign-engine" }
+carosign-runtime = { path = "../../runtime/carosign-runtime" }
+carosign-core = { path = "../../core/carosign-core" }
+carosign-adapters = { path = "../../runtime/carosign-adapters" }
+carosign-evidence = { path = "../../core/carosign-evidence" }
+carosignd = { path = "../../linux/carosignd" }

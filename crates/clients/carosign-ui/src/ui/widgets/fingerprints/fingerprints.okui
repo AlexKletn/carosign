@@ -1,0 +1,11 @@
+<section class="fingerprint-list">
+  <div class="fingerprint-toolbar">
+    <span class="status">{scope}</span>
+    <button class={add_class} disabled={add_disabled} on:click=fingerprint_add test-id="fingerprint-add">{add_label}</button>
+  </div>
+  <ul class="fingerprint-rows">
+    <slot name="rows"/>
+  </ul>
+  <span class={empty_class}>{empty_label}</span>
+  <span class={availability_class}>{availability}</span>
+</section>

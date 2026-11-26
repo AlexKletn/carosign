@@ -1,0 +1,65 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/core/carosign-core",
+    "crates/core/carosign-engine",
+    "crates/core/carosign-evidence",
+
+    "crates/runtime/carosign-persistence",
+    "crates/runtime/carosign-runtime",
+    "crates/runtime/carosign-adapters",
+
+    "crates/protocol/carosign-protocol",
+    "crates/protocol/carosign-provider-sdk",
+
+    "crates/linux/carosign-linux",
+    "crates/linux/carosign-linux-ipc",
+    "crates/linux/carosignd",
+    "crates/linux/carosign-broker",
+
+    "crates/clients/carosignctl",
+    "crates/clients/carosign-l10n",
+    "crates/clients/carosign-fprintd-compat",
+    "crates/clients/pam-carosign",
+
+    "crates/testing/carosign-testkit",
+]
+
+# These packages build separately with their own lockfiles.
+exclude = [
+    "crates/clients/carosign-ui",
+    "crates/testing/carosign-mock-provider",
+    "crates/tools/carosign-fence-inspect",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "GPL-2.0-only"
+rust-version = "1.85"
+
+[workspace.dependencies]
+carosign-core = { path = "crates/core/carosign-core" }
+carosign-l10n = { path = "crates/clients/carosign-l10n" }
+carosign-engine = { path = "crates/core/carosign-engine" }
+carosign-persistence = { path = "crates/runtime/carosign-persistence" }
+carosign-evidence = { path = "crates/core/carosign-evidence" }
+carosign-runtime = { path = "crates/runtime/carosign-runtime" }
+carosign-protocol = { path = "crates/protocol/carosign-protocol" }
+carosign-provider-sdk = { path = "crates/protocol/carosign-provider-sdk" }
+carosign-linux = { path = "crates/linux/carosign-linux" }
+carosign-linux-ipc = { path = "crates/linux/carosign-linux-ipc" }
+carosign-adapters = { path = "crates/runtime/carosign-adapters" }
+
+prost = "0.11.9"
+libc = "0.2"
+redb = "2.6.3"
+prost-build = "0.11.9"
+
+
+[profile.release]
+opt-level = 2
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true

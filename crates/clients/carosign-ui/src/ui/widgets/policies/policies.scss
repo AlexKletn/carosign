@@ -1,0 +1,146 @@
+@use "mixins";
+
+.policy-controls, .policy-fields {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.policy-field {
+  @include mixins.stack;
+  flex: 1 1 110px;
+  min-width: 0;
+  gap: 4px;
+}
+
+.policy-field input { padding: 8px; }
+
+.section-column > .panel {
+  background-color: var(--color-window-bg);
+  color: var(--color-window-fg);
+}
+
+.policy-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.policy-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.policy-advanced-toggle { align-self: flex-start; }
+
+button.policy-primary {
+  color: var(--color-selected-fg);
+  background-color: var(--color-selected-bg);
+  font-weight: 600;
+}
+
+.policy-position { flex: 1 1 auto; }
+.policy-field.policy-lifetime { flex: none; max-width: 140px; }
+
+.policy-option-group {
+  @include mixins.stack;
+  border-top: 1px solid var(--color-border);
+  padding-top: 10px;
+  gap: 8px;
+}
+
+.policy-choice {
+  flex: 1 1 250px;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.policy-hidden { display: none; }
+
+.policy-rule-list {
+  @include mixins.stack;
+  gap: 4px;
+}
+
+button.policy-rule {
+  justify-content: flex-start;
+  padding: 10px;
+  border-color: transparent;
+
+  &.selected {
+    background-color: var(--color-selected-bg);
+    color: var(--color-selected-fg);
+    font-weight: 600;
+  }
+
+  &:focus-visible { border-color: var(--color-focus-ring); }
+}
+
+.policy-fields { align-items: flex-start; }
+.policy-avatar {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  border-radius: 12px;
+  color: inherit;
+  background-image: var(--color-hover-overlay);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.policy-avatar-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.policy-editor-actions { justify-content: flex-end; }
+
+.policy-access {
+  @include mixins.stack;
+  flex-shrink: 0;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+
+  .value, .status {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  button {
+    align-self: center;
+    width: 11.2em;
+    max-width: 100%;
+  }
+}
+
+.policy-access-title {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  white-space: normal;
+}
+
+@media (max-width: 560px) {
+  .policy-fields {
+    flex-direction: column;
+    align-items: stretch;
+
+    > .policy-field { flex: 0 0 auto; }
+  }
+}

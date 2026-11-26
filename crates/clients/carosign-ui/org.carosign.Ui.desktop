@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=CaroSign
+Comment=View CaroSign platform and device status
+Comment[ru]=Состояние платформы CaroSign и её устройств
+Exec=carosign-ui
+Icon=preferences-system
+Terminal=false
+Categories=System;
+Actions=FrameDiagnostics;
+
+[Desktop Action FrameDiagnostics]
+Name=FPS diagnostics
+Name[ru]=Диагностика FPS
+Exec=env OBSCUR_FRAME_STATS=each carosign-ui

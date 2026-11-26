@@ -1,0 +1,9 @@
+<div class="fingerprint-row-actions">
+  <div class="fingerprint-delete-confirmation">
+    <span>{confirmation_prompt}</span>
+    <div class="fingerprint-confirmation-buttons">
+      <button on:click=fingerprint_delete_cancel test-id="fingerprint-delete-cancel">{cancel_label}</button>
+      <button class="fingerprint-row-delete" on:click=fingerprint_delete_confirm test-id="fingerprint-delete-confirm">{delete_label}</button>
+    </div>
+  </div>
+</div>

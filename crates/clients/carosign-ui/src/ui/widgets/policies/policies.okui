@@ -1,0 +1,73 @@
+<section class={list_class}>
+  <div class="policy-controls policy-rule-toolbar">
+    <span class="label policy-position">{rules_label}</span>
+    <button disabled={write_disabled} on:click=policy_add>{add_label}</button>
+  </div>
+  <span class="value">{rule_summary_label}</span>
+  <span class="status">{rules_status}</span>
+  <div class="policy-rule-list">
+    <slot name="rules"/>
+  </div>
+  <div class={pagination_class}>
+    <button disabled={previous_disabled} on:click=policy_previous>{previous_label}</button>
+    <span>{position}</span>
+    <button disabled={next_disabled} on:click=policy_next>{next_label}</button>
+  </div>
+</section>
+<section class={editor_class}>
+  <div class="policy-controls policy-editor-actions">
+    <button disabled={rule_disabled} on:click=policy_delete>{delete_label}</button>
+  </div>
+  <div class="policy-fields">
+    <div class="policy-field select-anchor">
+      <span class="label">{uid_label}</span>
+      <slot name="uid_trigger"/>
+      <span class="status">{caller_guide_label}</span>
+    </div>
+    <div class="policy-field select-anchor">
+      <span class="label">{subject_label}</span>
+      <slot name="subject_trigger"/>
+      <span class="status">{subject_guide_label}</span>
+    </div>
+  </div>
+  <div class="policy-option-group">
+    <span class="label">{actions_label}</span>
+    <div class="policy-controls">
+      <checkbox class="policy-choice" disabled={rule_disabled} label={verify} checked={verify_checked} on:change=verify/>
+      <checkbox class="policy-choice" disabled={rule_disabled} label={enroll} checked={enroll_checked} on:change=enroll/>
+      <checkbox class="policy-choice" disabled={rule_disabled} label={remove} checked={remove_checked} on:change=remove/>
+      <checkbox class="policy-choice" disabled={rule_disabled} label={observe} checked={observe_checked} on:change=observe/>
+      <checkbox class="policy-choice" disabled={rule_disabled} label={inventory} checked={inventory_checked} on:change=inventory/>
+      <checkbox class="policy-choice" disabled={rule_disabled} label={cancel} checked={cancel_checked} on:change=cancel/>
+    </div>
+  </div>
+  <span class={inventory_hint_class}>{inventory_hint}</span>
+    <div class={purpose_class}>
+      <span class="label">{purpose_label}</span>
+      <span class="status">{purpose_guide_label}</span>
+      <div class="policy-controls">
+        <radio class="policy-choice" disabled={rule_disabled} label={purpose_0} checked={purpose_0_checked} on:change=none/>
+        <radio class="policy-choice" disabled={rule_disabled} label={purpose_1} checked={purpose_1_checked} on:change=session-login/>
+        <radio class="policy-choice" disabled={rule_disabled} label={purpose_2} checked={purpose_2_checked} on:change=session-unlock/>
+        <radio class="policy-choice" disabled={rule_disabled} label={purpose_3} checked={purpose_3_checked} on:change=privileged-action/>
+        <radio class="policy-choice" disabled={rule_disabled} label={purpose_4} checked={purpose_4_checked} on:change=self-check/>
+        <radio class="policy-choice" disabled={rule_disabled} label={purpose_5} checked={purpose_5_checked} on:change=key-operation/>
+      </div>
+    </div>
+  <button class="policy-advanced-toggle" disabled={rule_disabled} on:click=policy_advanced>{advanced_label}</button>
+  <div class={advanced_class}>
+    <div class="policy-field policy-lifetime">
+      <span class="label">{lifetime_label}</span>
+      <input disabled={rule_disabled} value={lifetime} on:input=lifetime/>
+    </div>
+
+  </div>
+</section>
+<footer class="policy-toolbar">
+  <span class={result_class}>{result}</span>
+  <div class="policy-toolbar-actions">
+    <button class={undo_class} on:click=policy_undo_delete>{undo_delete_label}</button>
+    <button class={reload_class} on:click=policy_reload>{reload_label}</button>
+    <button class="policy-primary" disabled={save_disabled} on:click=policy_write>{save_label}</button>
+  </div>
+</footer>

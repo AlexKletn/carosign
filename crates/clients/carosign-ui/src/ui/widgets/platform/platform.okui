@@ -1,0 +1,3 @@
+<div class="platform">
+  <slot name="sections"/>
+</div>

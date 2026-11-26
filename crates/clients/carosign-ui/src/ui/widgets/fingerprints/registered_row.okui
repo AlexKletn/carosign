@@ -1,0 +1,9 @@
+<li class={item_class}>
+  <button class={row_class} id={row_id} aria-expanded={expanded} test-id={row_id} on:click=fingerprint_select>
+    <div class="fingerprint-icon-area"><img class="fingerprint-icon" src="fingerprint.svg" alt=""/></div>
+    <span class="label fingerprint-row-text">{label}</span>
+    <img class={chevron_class} src={chevron} alt=""/>
+  </button>
+  <slot name="name_editor"/>
+  <slot name="actions"/>
+</li>

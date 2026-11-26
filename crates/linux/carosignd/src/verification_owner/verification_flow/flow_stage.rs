@@ -1,0 +1,35 @@
+use super::{MatchedEvidenceOwner, VerificationOwner, VerificationStart};
+
+pub(super) enum FlowStage {
+    Admitted,
+    Acquiring,
+    Starting(VerificationStart),
+    SendFailure,
+    SendFailureHandoff,
+    SendFailureDrive,
+    Receiving(VerificationOwner),
+    MatchedHeld,
+    // The lost confirmation transmission cannot be repeated: the verifier may have already
+    // used a one-time call.
+    ScopedAssertionEvaluating,
+    ScopedAssertionEvaluated,
+    ScopedAssertionStaged,
+    MatchedStored(carosign_evidence::material::EvidenceMaterialRef),
+    MatchedPending(carosign_evidence::material::EvidenceMaterialRef),
+    MatchedEvaluating(MatchedEvidenceOwner),
+    MatchedEvaluated,
+    PositiveRevalidating,
+    PositiveHandoffBeforeCleanup,
+    PositiveCleanup,
+    PositiveCleanupStarted,
+    PositiveCleanupResult,
+    PositiveRevalidateAfterCleanup,
+    PositiveRevalidatingAfterCleanup,
+    PositiveHandoffAfterCleanup,
+    PositiveReady,
+    PositiveDeliveryTaken,
+    Delivery,
+    DeliveryRetained,
+    Finished,
+    Failed,
+}

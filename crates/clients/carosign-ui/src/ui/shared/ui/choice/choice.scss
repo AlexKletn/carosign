@@ -1,0 +1,86 @@
+$indicator-size: 16px;
+
+checkbox, radio {
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+  gap: 8px;
+  color: var(--color-surface-fg);
+
+  &:focus { outline: none; }
+  &:focus-visible {
+    outline: 1px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    color: var(--color-text-muted);
+    opacity: 0.65;
+  }
+}
+
+checkbox::part(checkbox-box), radio::part(radio-dot) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: 0 0 $indicator-size;
+  width: $indicator-size;
+  min-width: $indicator-size;
+  height: $indicator-size;
+  min-height: $indicator-size;
+  border: 1px solid var(--color-border-strong);
+  background-color: var(--color-surface-bg);
+}
+
+checkbox::part(checkbox-box) {
+  border-radius: 4px;
+  color: var(--color-surface-fg);
+  font-size: 0.8em;
+}
+
+radio::part(radio-dot) { border-radius: 8px; }
+
+checkbox:hover:not(:disabled)::part(checkbox-box),
+radio:hover:not(:disabled)::part(radio-dot) {
+  border-color: var(--color-focus-ring);
+  background-image: var(--color-hover-overlay);
+}
+
+checkbox:active:not(:disabled)::part(checkbox-box),
+radio:active:not(:disabled)::part(radio-dot) {
+  border-color: var(--color-focus-ring);
+  background-image: var(--color-pressed-overlay);
+}
+
+checkbox:focus::part(checkbox-box), radio:focus::part(radio-dot) { outline: none; }
+
+checkbox:checked::part(checkbox-box), checkbox:indeterminate::part(checkbox-box) {
+  border-color: var(--color-surface-fg);
+  background-color: var(--color-surface-fg);
+  color: var(--color-surface-bg);
+}
+
+checkbox:checked:hover:not(:disabled)::part(checkbox-box),
+checkbox:checked:active:not(:disabled)::part(checkbox-box),
+checkbox:indeterminate:hover:not(:disabled)::part(checkbox-box),
+checkbox:indeterminate:active:not(:disabled)::part(checkbox-box) {
+  border-color: var(--color-focus-ring);
+  background-color: var(--color-surface-fg);
+}
+
+checkbox::part(checkbox-bar) { background-color: var(--color-surface-bg); }
+
+radio::part(radio-fill) {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--color-surface-fg);
+}
+
+checkbox:disabled::part(checkbox-box), radio:disabled::part(radio-dot) {
+  border-style: solid;
+  border-color: var(--color-border);
+  background-color: var(--color-surface-bg);
+  color: var(--color-text-muted);
+}

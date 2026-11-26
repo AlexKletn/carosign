@@ -1,0 +1,55 @@
+ноя 16 03:40:01.982373 spinel systemd[1]: Starting Адаптер совместимости fprintd биометрической платформы...
+ноя 16 03:40:02.008082 spinel systemd[1]: Started Адаптер совместимости fprintd биометрической платформы.
+ноя 16 03:40:31.181336 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.471997443 event=get_default_device_request
+ноя 16 03:40:31.182564 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.473461193 event=availability_observed_present
+ноя 16 03:40:31.182630 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.473553954 event=availability_became_present
+ноя 16 03:40:31.182771 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.473678068 event=get_default_device_reply
+ноя 16 03:40:31.220416 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.511135048 event=get_all_request
+ноя 16 03:40:31.220416 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.511237391 event=availability_cached_present
+ноя 16 03:40:31.220652 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.511428902 event=get_all_reply
+ноя 16 03:40:31.459958 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.750796037 event=get_default_device_request
+ноя 16 03:40:31.459958 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.750904370 event=availability_cached_present
+ноя 16 03:40:31.460084 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.751018589 event=get_default_device_reply
+ноя 16 03:40:31.474041 spinel biometricd[2074459]: biometricd: сеанс отклонён: verification unavailable: Admission
+ноя 16 03:40:31.684512 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.975393225 event=get_default_device_request
+ноя 16 03:40:31.685243 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.976217183 event=availability_observed_present
+ноя 16 03:40:31.685339 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.976252756 event=get_default_device_reply
+ноя 16 03:40:31.698158 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.989114110 event=get_all_request
+ноя 16 03:40:31.698158 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.989143902 event=availability_cached_present
+ноя 16 03:40:31.698158 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480193.989177756 event=get_all_reply
+ноя 16 03:40:31.702506 spinel biometricd[2074946]: MOCK: waiting for SSH decision: match, no-match, no-sample
+ноя 16 03:41:01.742195 spinel biometricd[2074459]: biometricd: сеанс отклонён: verification unavailable: Delivery
+ноя 16 03:42:09.153648 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.444557927 event=get_default_device_request
+ноя 16 03:42:09.155664 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.446489698 event=availability_observed_present
+ноя 16 03:42:09.155664 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.446616885 event=get_default_device_reply
+ноя 16 03:42:09.167358 spinel biometricd[2074459]: biometricd: сеанс отклонён: verification unavailable: Admission
+ноя 16 03:42:09.400759 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.691680271 event=get_default_device_request
+ноя 16 03:42:09.400859 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.691755635 event=availability_cached_present
+ноя 16 03:42:09.400894 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.691834958 event=get_default_device_reply
+ноя 16 03:42:09.414454 spinel biometricd[2075905]: MOCK: waiting for SSH decision: match, no-match, no-sample
+ноя 16 03:42:09.421517 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.712294021 event=get_all_request
+ноя 16 03:42:09.421517 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.712324281 event=availability_cached_present
+ноя 16 03:42:09.421517 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480291.712360896 event=get_all_reply
+ноя 16 03:43:11.071103 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.362010403 event=get_default_device_request
+ноя 16 03:43:11.071578 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.362514674 event=availability_observed_present
+ноя 16 03:43:11.071692 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.362615664 event=get_default_device_reply
+ноя 16 03:43:11.080657 spinel biometricd[2074459]: biometricd: сеанс отклонён: verification unavailable: Admission
+ноя 16 03:43:11.294381 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.585334726 event=get_default_device_request
+ноя 16 03:43:11.294381 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.585367278 event=availability_cached_present
+ноя 16 03:43:11.294381 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.585395091 event=get_default_device_reply
+ноя 16 03:43:11.306752 spinel biometricd[2076390]: MOCK: waiting for SSH decision: match, no-match, no-sample
+ноя 16 03:43:11.321522 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.612261393 event=get_all_request
+ноя 16 03:43:11.321522 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.612297018 event=availability_cached_present
+ноя 16 03:43:11.321522 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480353.612337539 event=get_all_reply
+ноя 16 03:43:27.884623 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.175587168 event=get_default_device_request
+ноя 16 03:43:27.885144 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.176124303 event=availability_observed_present
+ноя 16 03:43:27.885195 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.176154407 event=get_default_device_reply
+ноя 16 03:43:27.897294 spinel biometricd[2074459]: biometricd: сеанс отклонён: verification unavailable: Admission
+ноя 16 03:43:28.226069 spinel biometricd[2076590]: MOCK: waiting for SSH decision: match, no-match, no-sample
+ноя 16 03:43:28.303819 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.594692740 event=get_default_device_request
+ноя 16 03:43:28.303946 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.594817168 event=availability_cached_present
+ноя 16 03:43:28.304014 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.594932636 event=get_default_device_reply
+ноя 16 03:43:28.319423 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.610182376 event=get_all_request
+ноя 16 03:43:28.319423 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.610301438 event=availability_cached_present
+ноя 16 03:43:28.319593 spinel biometric-fprintd-compat[2074630]: fprintd-diag monotonic=480370.610488886 event=get_all_reply
+ноя 16 03:43:31.655682 spinel biometricd[2074459]: biometricd: сеанс отклонён: verification unavailable: Delivery

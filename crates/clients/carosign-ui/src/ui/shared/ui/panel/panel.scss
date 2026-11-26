@@ -1,0 +1,11 @@
+@use "mixins";
+@use "variables";
+
+.panel {
+  @include mixins.stack;
+  padding: 16px;
+  gap: 12px;
+  color: var(--color-surface-fg);
+  background-color: var(--color-surface-bg);
+  border-radius: variables.$card-radius;
+}

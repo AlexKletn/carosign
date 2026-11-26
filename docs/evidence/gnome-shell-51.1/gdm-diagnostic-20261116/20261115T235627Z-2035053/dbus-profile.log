@@ -1,0 +1,6 @@
+#type	timestamp	serial	sender	destination	path	interface	member
+#					in_reply_to
+sig	1794786987.572203	4294967295	org.freedesktop.DBus	:1.946247	/org/freedesktop/DBus	org.freedesktop.DBus	NameAcquired
+sig	1794786987.572316	4294967295	org.freedesktop.DBus	:1.946247	/org/freedesktop/DBus	org.freedesktop.DBus	NameLost
+mc	1794787026.004135	2	:1.946375	net.reactivated.Fprint	/net/reactivated/Fprint/Device/0	net.reactivated.Fprint.Device	ListEnrolledFingers
+mc	1794787099.983066	264	:1.945035	:1.946312	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice

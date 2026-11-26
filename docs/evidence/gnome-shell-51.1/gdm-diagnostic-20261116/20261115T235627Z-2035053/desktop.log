@@ -1,0 +1,9 @@
+ноя 16 02:58:15.696786 spinel gnome-shell[2028702]: Type GITypeInfo of property AccountsService.User::password-mode does not match return type GITypeInfo of getter get_password_mode. Falling back to slow path
+ноя 16 02:58:16.522905 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 02:58:16.684314 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 02:58:17.110200 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 02:58:17.530819 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 02:58:17.578185 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 02:58:17.967666 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 02:58:18.591309 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 02:58:19.032645 spinel gnome-shell[2028702]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist

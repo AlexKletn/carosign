@@ -1,0 +1,945 @@
+{
+  "version": "0.6.6",
+  "files": [
+    {
+      "path": "CHANGELOG-v0.6.5.md",
+      "bytes": 2394,
+      "sha256": "bb51317f13a7464f24d71adf5ed01d327e73ae61645ed54f8805013c6c1304fe"
+    },
+    {
+      "path": "CHANGELOG-v0.6.6.md",
+      "bytes": 1352,
+      "sha256": "bc8509b6e65a2d7b273b38073280c58cdfa4d5b118f91ff3b722d1b30ec60d41"
+    },
+    {
+      "path": "IMPLEMENTATION_AGENT_BRIEF.md",
+      "bytes": 8666,
+      "sha256": "a407bb90622cedeb5321bb1f000a44823df79724cd66635413cfd955b9d07ab9"
+    },
+    {
+      "path": "README.md",
+      "bytes": 12658,
+      "sha256": "cffe62d52a093ff1af8583bc5dcaa1188b5438050e268753ef966423989a9f7a"
+    },
+    {
+      "path": "architecture/00-status-and-sources.md",
+      "bytes": 6918,
+      "sha256": "cc286558dc88a60e8a5d8351316bdd12cdca8bf063d79ead01487ca084bcca78"
+    },
+    {
+      "path": "architecture/01-product-and-principles.md",
+      "bytes": 4932,
+      "sha256": "6192144fd01f9fa8bf6a2af9bcc0c94599db8df505ba1729173d3aa460f03e71"
+    },
+    {
+      "path": "architecture/02-components-and-topology.md",
+      "bytes": 4485,
+      "sha256": "a581506237578e4f9efa75b88cc403dc9dc6c775cf1a2c31435b4af777507576"
+    },
+    {
+      "path": "architecture/03-domain-model.md",
+      "bytes": 5613,
+      "sha256": "c3115bedac1963d1a58901f3034353428aa2ae69f3ed84732d7de101c71a7a4a"
+    },
+    {
+      "path": "architecture/04-provider-package.md",
+      "bytes": 4356,
+      "sha256": "ee232a6a620845903e5d3b5bd87f044b45c1b699e98e31a785d5606ac2ab2311"
+    },
+    {
+      "path": "architecture/05-device-discovery.md",
+      "bytes": 3115,
+      "sha256": "79843022788efdd938627e0848d256ca0c8a5f6ceefa43f0502d940c7c876da1"
+    },
+    {
+      "path": "architecture/06-persistence.md",
+      "bytes": 4493,
+      "sha256": "93ea0712071d64d9e4b0b5c3b690b1da8deb55b9d523a7571ffe1f4822e529bb"
+    },
+    {
+      "path": "architecture/07-runtime-lifecycle.md",
+      "bytes": 3257,
+      "sha256": "3d73c14624133acb73711b40ce4cce452ff3032d027dfef3d48995bca78571f2"
+    },
+    {
+      "path": "architecture/08-security.md",
+      "bytes": 4538,
+      "sha256": "d3c2e5042fd446789ac82851a7212c73842abd93c716ca1433092d6414585806"
+    },
+    {
+      "path": "contracts/proto/bio/broker/v1/broker.proto",
+      "bytes": 2263,
+      "sha256": "f2bc977c4b72cec550633d7b7a5c743466800c59e5890308ce11cbeccfbb2f56"
+    },
+    {
+      "path": "contracts/proto/bio/client/v1/client.proto",
+      "bytes": 5616,
+      "sha256": "46b6e5fe436bdbc9481f03de4c1862c032e6847b7959c5fc6028de33b2dd53b9"
+    },
+    {
+      "path": "contracts/proto/bio/common/v1/common.proto",
+      "bytes": 3801,
+      "sha256": "e2fd385cbb6a030de9a12d9275999624edd9542a9caa3aafd0dc40d3741ab3f8"
+    },
+    {
+      "path": "contracts/proto/bio/provider/v1/provider.proto",
+      "bytes": 9483,
+      "sha256": "f16dff60efef2097633fe27103eeea05605a316f50280957867c678afb52683a"
+    },
+    {
+      "path": "contracts/proto/bio/storage/v1/storage.proto",
+      "bytes": 6660,
+      "sha256": "4d421bcebc751a517100aecef3861811f00346ad679484421890d58418c39ff3"
+    },
+    {
+      "path": "engineering/conformance.md",
+      "bytes": 3569,
+      "sha256": "9e777d1f793eddd4c9eb315c9e646049fcb8ab551764d4ed0721ad4ec6dad38f"
+    },
+    {
+      "path": "engineering/decisions.md",
+      "bytes": 5584,
+      "sha256": "9c520ec268bf6e7805d71b883adfd33724f1184f472fc1a92b59c65ff3811e0d"
+    },
+    {
+      "path": "engineering/glossary.md",
+      "bytes": 3424,
+      "sha256": "8523a2b10044db5c6e4a4f0af5ecf75a18b4e1b898e995db07116a3fba5664b7"
+    },
+    {
+      "path": "engineering/implementation-v06/01-decisions-and-change-control.md",
+      "bytes": 6885,
+      "sha256": "8e90db78a63a14c14997387c2ad44717e7ee72c62faf94798c4a5625419c370b"
+    },
+    {
+      "path": "engineering/implementation-v06/02-crates-and-modules.md",
+      "bytes": 6634,
+      "sha256": "e09f434c371ccc6cfb0895765cb6e8e6bc6c2c7ef750a7b17acc35537f6906d2"
+    },
+    {
+      "path": "engineering/implementation-v06/03-domain-types.md",
+      "bytes": 9423,
+      "sha256": "1b744751d3c1aeaf5cc4804c6686ba8b2cbe8eca156a3e05b8853047acd54fef"
+    },
+    {
+      "path": "engineering/implementation-v06/04-pure-engine.md",
+      "bytes": 11151,
+      "sha256": "9cadbbd4efcb11c27a041679d2968a9be59767fa12106c09c1ccdc770e538130"
+    },
+    {
+      "path": "engineering/implementation-v06/05-runtime-actors.md",
+      "bytes": 7419,
+      "sha256": "58c656642cacd54bf0a6834bc17fb4c9cfbc3f80eda71078aafa28b2f5a269ad"
+    },
+    {
+      "path": "engineering/implementation-v06/06-provider-host-and-wire.md",
+      "bytes": 10363,
+      "sha256": "e8bc75d6da37ab667c7cf52b1a49c680b5bf2d372935543d13d18d434ea8e2c5"
+    },
+    {
+      "path": "engineering/implementation-v06/07-public-client-contract.md",
+      "bytes": 5225,
+      "sha256": "f1880264e7dc45b4f2de2d4433fd474e7f522975ce341176deb1baf9c0fe0b46"
+    },
+    {
+      "path": "engineering/implementation-v06/08-identity-authority.md",
+      "bytes": 5144,
+      "sha256": "5cc85497927a9c7c6330bc184bd407c07792e1bf46cebf6e635c6c1e28d7f719"
+    },
+    {
+      "path": "engineering/implementation-v06/09-device-and-broker.md",
+      "bytes": 7395,
+      "sha256": "3b0174a978c7fd8666d26143ec93be11fc27180d8ec2987bf92d2d922192d47c"
+    },
+    {
+      "path": "engineering/implementation-v06/10-persistence-and-recovery.md",
+      "bytes": 14402,
+      "sha256": "7eeb60474ade0901a945a3fefe322fcabb40cdd24eb8013f8846ae13546f89c8"
+    },
+    {
+      "path": "engineering/implementation-v06/11-evidence-and-assurance.md",
+      "bytes": 5208,
+      "sha256": "4707e211902e63971978b33eebbf9584e634853608b5882fe5291ed753b5d405"
+    },
+    {
+      "path": "engineering/implementation-v06/12-package-and-update.md",
+      "bytes": 3916,
+      "sha256": "06e7f253e358f4c000a0a8e88ba5dc098f62ea3c205a8a94a2e6714804a4374d"
+    },
+    {
+      "path": "engineering/implementation-v06/13-limits-errors-and-observability.md",
+      "bytes": 5673,
+      "sha256": "544c218b4851792fdb7475918c3c5e85fd935198fe8ad2e11755987ddb4312f2"
+    },
+    {
+      "path": "engineering/implementation-v06/14-provider-integration-contracts.md",
+      "bytes": 8041,
+      "sha256": "1c4b79713d2c8d503942324682354a583bed56428d15e8defea764720913093d"
+    },
+    {
+      "path": "engineering/implementation-v06/15-conformance-matrix.md",
+      "bytes": 11483,
+      "sha256": "155465e30d05fc7b5a6ca654b67bf0dc05981307e4ed0ef4b3391ea2eb40fb1e"
+    },
+    {
+      "path": "engineering/implementation-v06/16-implementation-workorders.md",
+      "bytes": 8892,
+      "sha256": "d49f70e1edbd9a97d09ea12b47f65bab119580793ca347bb733d2506574430da"
+    },
+    {
+      "path": "engineering/implementation-v06/17-delta-and-open-evidence.md",
+      "bytes": 4281,
+      "sha256": "bb5375ecdac42f7635be3f15965ce86195a1efec902f63ccaace7d977ac57f73"
+    },
+    {
+      "path": "engineering/implementation-v06/18-review-gates.md",
+      "bytes": 4069,
+      "sha256": "c9c3d9a7f4a72bc5b0b584d9bb4f800031e1c0d3c8f3442d3ed622667932fe6f"
+    },
+    {
+      "path": "engineering/implementation-v06/19-normative-traces.md",
+      "bytes": 9795,
+      "sha256": "f82dfe326de995b5019b861fbfeb3442a88631a6ed7882e5c7cb65a16dbb5f49"
+    },
+    {
+      "path": "engineering/implementation-v06/20-protobuf-wire-validation.md",
+      "bytes": 9708,
+      "sha256": "0d0de9eb5197a6ccb4993305a231affc95bcab4d9f244d5ad76556d48eed6c9b"
+    },
+    {
+      "path": "engineering/implementation-v06/21-internal-port-signatures.md",
+      "bytes": 11492,
+      "sha256": "4980d5a0df3281fc697b1f6b8f774ff209dfedfb5e540fa13be70af414306f16"
+    },
+    {
+      "path": "engineering/implementation-v06/22-actor-messages.md",
+      "bytes": 7427,
+      "sha256": "693776f4889ee0f5a00e8fe8da864704aec05e2304670f92e9f81ee24836124b"
+    },
+    {
+      "path": "engineering/implementation-v06/23-storage-codec-and-index.md",
+      "bytes": 7554,
+      "sha256": "5aa94673df6812b752920c2738eb43950b078ab402bec8536714c1d71c4497d1"
+    },
+    {
+      "path": "engineering/implementation-v06/24-package-identity-and-templates.md",
+      "bytes": 4924,
+      "sha256": "8ba3ca8c378c4fccc08224f5a0e9a0092c4ad8db861b840df336307aa1fb3379"
+    },
+    {
+      "path": "engineering/implementation-v06/25-v061-conflict-resolutions.md",
+      "bytes": 5192,
+      "sha256": "44d78e567dd1ed2923085afeed422ada18f440f09773c9a5c3d924565951646a"
+    },
+    {
+      "path": "engineering/implementation-v06/26-mediated-broker-v1.md",
+      "bytes": 6513,
+      "sha256": "9c511584e2567b698edf03914fe84f36d319741e026e88b629c3f9b8dc920df8"
+    },
+    {
+      "path": "engineering/implementation-v06/27-enrollment-challenge-gap.md",
+      "bytes": 2356,
+      "sha256": "f067aa61af751c5f1c1b39904ee1fc31a71f8ba830024a2bab30c6b04ec5c1a8"
+    },
+    {
+      "path": "engineering/implementation-v06/27-v062-engine-conflict-resolutions.md",
+      "bytes": 5244,
+      "sha256": "741b068bf5d7cec46479856204b4750c26c0057e5217780528175b2ca825cb40"
+    },
+    {
+      "path": "engineering/implementation-v06/28-v063-operation-discriminant-and-send.md",
+      "bytes": 8381,
+      "sha256": "b902d698441892f467abbf858072dd5d1a4091e160f0a091e00ef58128767fe6"
+    },
+    {
+      "path": "engineering/implementation-v06/29-v064-provider-owned-matching.md",
+      "bytes": 15082,
+      "sha256": "283b60e30aa91e9abc7fc4a96e759db871de0f211e3e08f3826b45840071a74b"
+    },
+    {
+      "path": "engineering/implementation-v06/30-v065-audit-and-authority.md",
+      "bytes": 6593,
+      "sha256": "31e4dd39eeea9e84319f1f426f4ee778a7226bc96176c003e94b30abae02bbc5"
+    },
+    {
+      "path": "engineering/implementation-v06/31-v065-enrollment-authorization.md",
+      "bytes": 9457,
+      "sha256": "733f7f60e9a094184a43074ec4cda9ec0711026ed2766ed541beeb32cdcd1fd0"
+    },
+    {
+      "path": "engineering/implementation-v06/32-v065-bulk-command-buffer.md",
+      "bytes": 8725,
+      "sha256": "fe3530493da030fe24f9d51bc73dc76be4dd80985e95e0e2af59553a17deec1c"
+    },
+    {
+      "path": "engineering/implementation-v06/33-v065-durable-mutation-plan.md",
+      "bytes": 6463,
+      "sha256": "b9b6fec5852fe7e3c852d1541b23b68435623264146bc3c59aaf1825a263f33f"
+    },
+    {
+      "path": "engineering/implementation-v06/34-v066-enrollment-command-projection.md",
+      "bytes": 10554,
+      "sha256": "48c4df991872e1f741888694a9b58508ec4ffc0bb01c98aa11699b4f448bcabd"
+    },
+    {
+      "path": "engineering/implementation-v06/README.md",
+      "bytes": 13520,
+      "sha256": "c27ae869fc2a3c1f00780b1de2e115b58dec1aa3cf0ae9ebf1e3867ca2b1274e"
+    },
+    {
+      "path": "engineering/implementation-v06/VALIDATION.md",
+      "bytes": 3987,
+      "sha256": "8f298dd19e5ba88177dab1fbd3253eb2a4fe8eef5f4f31232f6dd2682912d1ea"
+    },
+    {
+      "path": "engineering/open-questions.md",
+      "bytes": 3975,
+      "sha256": "2b07de4c901606146d05c3e04143bc2da6f0f440ddb5e03b7cf795bcb75d5fb5"
+    },
+    {
+      "path": "engineering/operations-and-upgrades.md",
+      "bytes": 4280,
+      "sha256": "32543a5d8426142c31acc2a1c0176165a80ff50712cfa052836afb14d5e5c2fd"
+    },
+    {
+      "path": "engineering/roadmap.md",
+      "bytes": 4512,
+      "sha256": "be1c035a0c8cf13fb2925f1fda6a72e791bedeb0370e2f8be7459be1a9c9ba8b"
+    },
+    {
+      "path": "engineering/rust/01-workspace.md",
+      "bytes": 4689,
+      "sha256": "2e579b4fe701ebf37c4d79de09890d5383259ad0f982a8cee8c1e01bfd24bf63"
+    },
+    {
+      "path": "engineering/rust/02-dependencies.md",
+      "bytes": 2941,
+      "sha256": "065b16e3106c7a3264223901508cffd3d1fc077468a21105eeee0aa366a093a0"
+    },
+    {
+      "path": "engineering/rust/03-core.md",
+      "bytes": 4134,
+      "sha256": "0c6430fdb31226e9ebbc4abbae73b009234372eb6b935f8e7937b88ad62d60de"
+    },
+    {
+      "path": "engineering/rust/04-engine.md",
+      "bytes": 2996,
+      "sha256": "f7de95b64155df2e569188fa86b78dfd4f2b43eae50fa7dd9bf3a91426a3c3e7"
+    },
+    {
+      "path": "engineering/rust/05-runtime.md",
+      "bytes": 4207,
+      "sha256": "94c796e40d15492d69bfd9859a74b8c956b0c2838525bd2924756a0bf5556160"
+    },
+    {
+      "path": "engineering/rust/06-provider-manager.md",
+      "bytes": 3511,
+      "sha256": "85b339ed38691fc13984bb64759702a2f3091816e089ebe353fa56a47f144743"
+    },
+    {
+      "path": "engineering/rust/07-operations.md",
+      "bytes": 3139,
+      "sha256": "9dad2435f23ac5dbfd49fb937baaf0990e7694d56b6ff747d4cccc31db0d05dd"
+    },
+    {
+      "path": "engineering/rust/08-scheduler.md",
+      "bytes": 2727,
+      "sha256": "eb5d1fb4cf504aab9739ec8cfa8b80cc7456fa4c7c0a66c99856b28dc52257a1"
+    },
+    {
+      "path": "engineering/rust/09-provider-protocol.md",
+      "bytes": 3082,
+      "sha256": "fcd80db20a70d0c31473b3c5d826a6a58f6da0d8831b5d620cd031c2c639e678"
+    },
+    {
+      "path": "engineering/rust/10-client-protocol.md",
+      "bytes": 2697,
+      "sha256": "595036759fcf7be84654932d261a83fa761e7d9fdc712f627264b5a2caf5dfdb"
+    },
+    {
+      "path": "engineering/rust/11-persistence.md",
+      "bytes": 3290,
+      "sha256": "f2ae6295755926bf60fce0a3207aa8f0f46c460577128a2e9c7757b596a6bff6"
+    },
+    {
+      "path": "engineering/rust/12-evidence.md",
+      "bytes": 2526,
+      "sha256": "0806a1c687d8e7e020189c59182d2440b738468a0b10aa9e33bf9ff5a77e4530"
+    },
+    {
+      "path": "engineering/rust/13-authority.md",
+      "bytes": 2407,
+      "sha256": "b2280f418565b336d870b6ffd6516935fdd8b3597014ac2444831f4ebb90a5fa"
+    },
+    {
+      "path": "engineering/rust/14-linux-resources.md",
+      "bytes": 2866,
+      "sha256": "7619f591d1ffb082ed14d130e702dd057fe65f083450684bba7d58fc26fff653"
+    },
+    {
+      "path": "engineering/rust/15-linux-service.md",
+      "bytes": 2354,
+      "sha256": "3a0038e1b936beb6dbe74e4fb6bf3789610cc4c949a2a191b226f437632b93d5"
+    },
+    {
+      "path": "engineering/rust/16-system-clients.md",
+      "bytes": 2411,
+      "sha256": "04ecad6f94c4a71f81320c11c3bbf3dd055f217a4995ebe3550f1dfaa60f1b64"
+    },
+    {
+      "path": "engineering/rust/17-gxfp5130.md",
+      "bytes": 3331,
+      "sha256": "7e92e5111f95f56a633a6a0164efe157c4703a3cd0de31d8a669fc381aa9cff6"
+    },
+    {
+      "path": "engineering/rust/18-goodix-qsee.md",
+      "bytes": 3455,
+      "sha256": "0a89e6995c8c0ffa535f089364168e500c8ce3842e7dd892c4c16d7e495310c3"
+    },
+    {
+      "path": "engineering/rust/19-nord4-qtee.md",
+      "bytes": 2681,
+      "sha256": "9c7877062b1b2e1575f699dd5df93272de6d6abb998e0a1e493011252cbb8e68"
+    },
+    {
+      "path": "engineering/rust/20-libfprint-bridge.md",
+      "bytes": 1646,
+      "sha256": "6c8e64dcfa19e1f8495e187da8fe5a939f87989907706bdc8a4bc95392f04f76"
+    },
+    {
+      "path": "engineering/rust/21-faults-observability.md",
+      "bytes": 2126,
+      "sha256": "a09550b4d2e68de98dfdc5ec247ff26a89851ebec7cec316d785ba4d28a99772"
+    },
+    {
+      "path": "engineering/rust/22-security.md",
+      "bytes": 2184,
+      "sha256": "b698662a8350a9dc39a628ef19d8556fdad32faf0a7e30d2962260e2d9beec7d"
+    },
+    {
+      "path": "engineering/rust/23-test-strategy.md",
+      "bytes": 2688,
+      "sha256": "9fa86500bcbdbcf8fbf8275a819e89bd1e63d733532f36d4142546fc04367c0a"
+    },
+    {
+      "path": "engineering/rust/24-implementation-sequence.md",
+      "bytes": 2717,
+      "sha256": "358d4af99e25dc819ad7689818f8fc4aa5e34eda98886bfbca9f7d6f192380e0"
+    },
+    {
+      "path": "engineering/rust/25-message-flows.md",
+      "bytes": 2853,
+      "sha256": "9254236c3637917805fe480243cf145fe180a0f328872979fd9177a58fe358ae"
+    },
+    {
+      "path": "engineering/rust/26-internal-contract-matrix.md",
+      "bytes": 6589,
+      "sha256": "53328012591bb5b6fa5f4c2375985f0f0ddd008d5066b52daaeda247ce92a601"
+    },
+    {
+      "path": "engineering/rust/README.md",
+      "bytes": 5285,
+      "sha256": "fe2bfcc63471af78e43964a60e615e147fe325075afd1d2d35ed4c5a1808b5d0"
+    },
+    {
+      "path": "engineering/workspace.md",
+      "bytes": 3716,
+      "sha256": "64c26b7ae5de8cb4cb174ef987e87088a76c799ba67e0d97271e59c24d152623"
+    },
+    {
+      "path": "platforms/linux.md",
+      "bytes": 4379,
+      "sha256": "910b33159be95e0bbbdf4530ed27b0d22af4ab16b478d09686292375aa1e20df"
+    },
+    {
+      "path": "platforms/veles.md",
+      "bytes": 4337,
+      "sha256": "49b8f4473d2823f1a9eacccc9a9bb1a04991bf9c232e45904ed3aed799dc0eb1"
+    },
+    {
+      "path": "protocols/00-transport.md",
+      "bytes": 6699,
+      "sha256": "484aad3aeece0c4646af48080786970c1db24ee70bd1379f40cf3d2c5c1feb0c"
+    },
+    {
+      "path": "protocols/01-provider-wire-v1.md",
+      "bytes": 9939,
+      "sha256": "8a2733be07a6736508e2dfb6944f833a6c8a81fbe4e75420d5d5fbb5484013a4"
+    },
+    {
+      "path": "protocols/02-client-wire-v1.md",
+      "bytes": 6204,
+      "sha256": "6079618d3c41e750aca3849f36b6f598e0b63c38fcb9bd4f0e34e4e5f4f8809f"
+    },
+    {
+      "path": "protocols/03-authority-and-resources.md",
+      "bytes": 4963,
+      "sha256": "29eeaec6c434bf07af0d727b0a9c1f6d8875e6bdcad85e9ebed0ed20c762a1f4"
+    },
+    {
+      "path": "protocols/04-evidence-and-trust.md",
+      "bytes": 4190,
+      "sha256": "8e5361d15acfb97e8a3a687bf4f8dec03a39165ce582f9766904917d00ee9a9c"
+    },
+    {
+      "path": "protocols/05-operations-and-recovery.md",
+      "bytes": 6683,
+      "sha256": "5d2fc89b2ae76a74b8d7946e5e4e1c41104749952e8d3b4e28ccfb71491aa851"
+    },
+    {
+      "path": "protocols/06-end-to-end-examples.md",
+      "bytes": 3634,
+      "sha256": "6fb21513a37e4fc264af65d51021b5b78f6124cce7183b2324f30a5688020b72"
+    },
+    {
+      "path": "providers/goodix-qsee.md",
+      "bytes": 3981,
+      "sha256": "ec7bc451cb117d1e3841e03d178e6daa3e582ec8e1fbc5d21c3ed075c7450e6f"
+    },
+    {
+      "path": "providers/gxfp5130.md",
+      "bytes": 3165,
+      "sha256": "e0c48da3d2ac03ba2bca010bbb5935502edbfcd3fe558baebfe9a044550e62df"
+    },
+    {
+      "path": "providers/libfprint-bridge.md",
+      "bytes": 4359,
+      "sha256": "afa2ace54abc50e456de892585c4428b91f0aeb4b9406e57fe601f9a9a6c5935"
+    },
+    {
+      "path": "providers/nord4-qtee.md",
+      "bytes": 2757,
+      "sha256": "11b340abd3caaf93251ffda9f8bfa5b89f8f2830a5284014c264b72a334f44de"
+    },
+    {
+      "path": "reference/README.md",
+      "bytes": 1889,
+      "sha256": "adf9a667fdd23db57eded19c3f2ebaf0472a6e1a630ef3f733f35149514eca9e"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/GF-CALIBRATION-FORMAT.md",
+      "bytes": 1861,
+      "sha256": "eb3002335575db9add38ab50bf0bcc3633f08bd733b8bf86abdd10778baa5252"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/README.md",
+      "bytes": 1903,
+      "sha256": "993874533e302708c8d5e7093d1c61d95205c3629196e38893825d8e6ac91d7a"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/SLUSHATEL-PLAN.md",
+      "bytes": 174501,
+      "sha256": "222cf2e82814d36eed6d4ce0d3af4194c03c70911478c65f36876fb6390e861a"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/TZ-TRANSPORT-AUDIT.md",
+      "bytes": 28951,
+      "sha256": "ee9f583da453e2cee98860cbd87b5f8e4e63d19ec616d34243d4190722b02495"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/UKAZATEL.md",
+      "bytes": 2556,
+      "sha256": "5dbcdf0d03c3cd6deffd39542f0cf6060afafe4da79750c7ce83e6a000cd6464"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/README.md",
+      "bytes": 1463,
+      "sha256": "72c4394a2c071917d904a51a603748dba2d2c17cca3ed80c0628ba1643a484d6"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/00-obzor.md",
+      "bytes": 5103,
+      "sha256": "ea2dc1137cf8add4517c6f92c35d5c5735053c111996b4f3ec89e6fd266b6fb6"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/01-yadro-shim.md",
+      "bytes": 4526,
+      "sha256": "661b56e90e6a06318371319015641e5fcf029d0da1eff8469be32812c17153d5"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/02-yadro-proba.md",
+      "bytes": 5889,
+      "sha256": "31506906be5a827453ab80f7c5d9503c8f1349d0923a84c9b3043d02683907a9"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/03-yadro-slushatel.md",
+      "bytes": 3517,
+      "sha256": "8f7e1eee73d3c84309075f4890bb9bd8bc60715ce57acf3fd889629334b3e5c5"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/04-demon-fs.md",
+      "bytes": 3011,
+      "sha256": "f9b61eb7ecd12666bf802b4cb627f8d763d09b27902398a835d144456ef7764b"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/05-demon-gpfs.md",
+      "bytes": 2792,
+      "sha256": "8f26a474dbbf685ab9cb565261965ad1edbcf17b46d7e190f3f57c8dc998d986"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/06-demon-rpmb.md",
+      "bytes": 3969,
+      "sha256": "f0d3afd7a9c2e705f8f36995ccef89321c31f9206703c9f15b27bb771d327d00"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/07-hal-sostoyaniya.md",
+      "bytes": 6405,
+      "sha256": "2642ea79c337fd7d79e53f2e530d300b066110f84488d42e86f26a458e256fbd"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/08-hal-libgf-ca.md",
+      "bytes": 2905,
+      "sha256": "8d32eb0d50643fc306f0d1acc309829bf63a0a5c61280373a5e25d911fb219b9"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/09-android-sloj.md",
+      "bytes": 2727,
+      "sha256": "4de2eaf2d938fc5c779b484b31df0ea52af72b9694809a659fb1adeb6be0f952"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/10-rust-dolzhen.md",
+      "bytes": 4629,
+      "sha256": "970ea4f33a64a5d2faa251e05938f040bc5c9bcc70625d992c7fe93ebe806516"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/11-otkrytye.md",
+      "bytes": 3134,
+      "sha256": "e66550ba739a6310b72ef9f1ee94d3f5ea3664bbc06d41d340c207d8e417cf6c"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/12-zagolovok-kadra.md",
+      "bytes": 2713,
+      "sha256": "0ae79cd66b7a20dd5f9d5049c3bfeb7d5576399455444244992b7b9a6761e4b5"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/13-sobytie-razbor.md",
+      "bytes": 11830,
+      "sha256": "2a79a1d2f9bb11b89fb0589bc0627d655fdfa047d132a0ac230e25505e72a8f7"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/14-komandy.md",
+      "bytes": 4970,
+      "sha256": "e618c2a64719c001590ddc9fd9a9208ed5dad64adbb8ec6f42215962d48e7058"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/15-tablica-hal-function.md",
+      "bytes": 3995,
+      "sha256": "c3cf4321b786f92c5daa85e82d0ae6bf76b13c94d2fce30fb5f6114dcab84e8a"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/16-posledovatelnost.md",
+      "bytes": 5185,
+      "sha256": "51eb1d2fb81a3cdad370785d95441ca83458820070af6d7af061056c402a3c58"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/17-stok-i-si.md",
+      "bytes": 8839,
+      "sha256": "9d196b2458babf6f196c036163ff68490f85a9354be658a90e2d15d9f7f460a0"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/18-stok-sluzhby.md",
+      "bytes": 3486,
+      "sha256": "a205d791225d6830e10db50ade7a10b87129f2430d240a745c3da9ba6a770cea"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/19-stok-nav-i-tajmery.md",
+      "bytes": 5888,
+      "sha256": "1f1eb5b26930c34bf4e4e509b7dbb5d4541273dbf124bdd6a75de9085d1bb508"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/20-nav-i-uinput.md",
+      "bytes": 4060,
+      "sha256": "2f4687a2c7dcf887c968b895ef3eb8211e40705d591a223bc3ade4d42944bbfb"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/21-povorot-i-sluzhebnye.md",
+      "bytes": 3919,
+      "sha256": "975db72f908c7248e2cb4e5fdd96fffac73650fa8149ceee1ba3d9fd205432cc"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/22-upravlyayushchie-komandy.md",
+      "bytes": 3741,
+      "sha256": "0af12a34f40485d01130067945966ea51f11dc2bef38fa1e382a6ae1267d9a3b"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/23-model-i-mtbase.md",
+      "bytes": 3512,
+      "sha256": "d4786171e1bc99af268db22c01c9ee7cea642488b96d34776cd13507338ac7de"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/24-imena-tablic.md",
+      "bytes": 4096,
+      "sha256": "e54851082f2ae3bf4ca0af799f6d9084964990d62628e34bbaa3ef2c9f9444bc"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/25-imena-svereno.md",
+      "bytes": 5136,
+      "sha256": "aec24a49efec5445ad21b7bcf6610e1556e29f69cefaa84cc6ae962466f5ffae"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/26-pitanie-i-takt.md",
+      "bytes": 4720,
+      "sha256": "c468ef48a9ef7bd80b86a2b8c0539b3cfa057254a43975bd1e10bc9768798176"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/27-drajver-yadra-stoka.md",
+      "bytes": 6602,
+      "sha256": "7a54747d3be3e6c81b929a9c3cf0c08f2869571b960bfc0f0cb938fe4e081d9a"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/28-zaderzhki-i-hz.md",
+      "bytes": 4396,
+      "sha256": "3380472e78f253494136b4209658df988cfd958c1ba3525dbbad24ff71602c6d"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/29-libgf-ca.md",
+      "bytes": 4804,
+      "sha256": "08de48cab6eda1b4beb4cedac32a155fb28da20e91cbe849677b47ab587766a1"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/30-zhizn-fajlov-i-shablonov.md",
+      "bytes": 5007,
+      "sha256": "d9ac12bfcd140fb72b60b8bb20a2b0498953199c4dec24b65d32b8a01ad5bb1f"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/31-svodka-sostoyaniya.md",
+      "bytes": 4687,
+      "sha256": "d98fe861a1cf17f9562cbb401331d669a7cf405f94d8d2334074d435b22faf94"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/32-chip-i-modeli.md",
+      "bytes": 5479,
+      "sha256": "fbf06e8c37c2e403ff46370e98d996f6ada709ad44c1db5dfe20930c420c09f3"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/33-tablicy-perehodov.md",
+      "bytes": 2968,
+      "sha256": "417dbb361f9dd7391929f5ab28853769fd215ef5f07e4bc8a455287ab07bc59a"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/34-adresa-fajl-i-obraz.md",
+      "bytes": 4037,
+      "sha256": "b103f55c661417c2b438cd3879895e7d6216f31196507fd2bdf6df6ee25fec2d"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/35-vybor-vesov.md",
+      "bytes": 5155,
+      "sha256": "eb629878d3f623f006e358cf6a313c2d07e4f197519e8a7c90454e33765ee42c"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/36-vybor-vesov-prochitano.md",
+      "bytes": 4715,
+      "sha256": "5da805f4f595df95f87dd1aba8a8daf452949bc57cbd9843cddba371c563551a"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/37-select-model-dizassembler.md",
+      "bytes": 5344,
+      "sha256": "35eadc8b16fd56b0c94ce97020007a20637453e7c2609f4e660f8b66a23e2140"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/38-libgf-ca-poryadok.md",
+      "bytes": 3234,
+      "sha256": "381716f200df19d60ddedc77b9f3de49fc627a789170a696e3b43c66ac3383ab"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/39-vesa-perechen.md",
+      "bytes": 3946,
+      "sha256": "a3f34924d28367c0c85f4e034c28171ce63ee89a14f4fce6268b647ea348c6cf"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/40-chto-ostalos.md",
+      "bytes": 5189,
+      "sha256": "c0936602c27480179f1cf0779dd6231d19dcf2416f126afb08f812e79c61e450"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/41-vesa-dlya-0x2e.md",
+      "bytes": 3694,
+      "sha256": "d5a9a7423893e73abf1190417b242737b8428e9b6ed89eaf100d98da78023a39"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/42-pm-vesa.md",
+      "bytes": 2410,
+      "sha256": "ee756bf864b634b176212e3ac2bbcbdc4b9130dda69e0bb19443e0fa1ab2d30d"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/43-asp-template.md",
+      "bytes": 3828,
+      "sha256": "d6708b20fce63a270d0f5758b82d02ce040f86355ee73d9d788b2d9af1042b09"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/44-probely-5-6.md",
+      "bytes": 3114,
+      "sha256": "1b599ea5ff65e466adbb2cd0ca33bd8674bbe4e02362a415f35fe83060ab8760"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/archive/sistema-2026-11-11/README.md",
+      "bytes": 5909,
+      "sha256": "9dfc12a2a433faeea6aabfc8b51363f3fad7ca5e91c3b89f3f3a3a5fd26f0825"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/00-overview.md",
+      "bytes": 2272,
+      "sha256": "d56c09a3a4285277f49aff65a4098d3e919bc0d3e80e5c99c8658398917fb9bd"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/01-hal-lifecycle.md",
+      "bytes": 2997,
+      "sha256": "7daca765a41cb92dc70403095f538d8f91580b1778768baf311876e1ef1faaab"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/02-sensor-event.md",
+      "bytes": 2413,
+      "sha256": "b152c024a15e6840ac1d40a402030a8276820693118f58496be19643a5b98f72"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/03-commands.md",
+      "bytes": 3503,
+      "sha256": "95e219c190d416efa29582bd3f0a37240b945b9a6c5100f96faa3a3c1d0298fe"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/04-kernel-and-services.md",
+      "bytes": 2639,
+      "sha256": "682dc23132292cb5fb21365c403cc5f4d404b9b8c01ec37f08d09880945275ad"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/05-open-questions.md",
+      "bytes": 1714,
+      "sha256": "7fb308507908480c76203c77076df736908f9e5e1702423b422334fba19298f7"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/README.md",
+      "bytes": 2180,
+      "sha256": "53a122fbb7c2feb9995ba04dec115108b6b56c4c6fdcedaca3d5117496134ad8"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/01-review-sessions.md",
+      "bytes": 1839,
+      "sha256": "d05b1faae98f93940a1b47e4c1456a59abf2541577532acfeaff2ca3aa850ba7"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/02-model-weights-search.md",
+      "bytes": 4835,
+      "sha256": "78fb12ce1401838c76a52f3d318fe28c78cc743220bbca4dd784d6a0d90088b9"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/03-jump-tables-first-try.md",
+      "bytes": 3210,
+      "sha256": "28a036152131dc4faade0164eab8f1092127a79734e7222de6574b758dd7afd3"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/04-file-and-image-addresses.md",
+      "bytes": 4550,
+      "sha256": "5eb57a24e7c5de908d4e19415779caae0386e9a990e4f7efe3044bcfcf38e513"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/10-event-measurements.md",
+      "bytes": 9280,
+      "sha256": "47d286197cdebe8410074a3cb7efd25c21b6b0b6187b51f76d459a503f7385a5"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/11-evening-analysis.md",
+      "bytes": 5451,
+      "sha256": "69366219330c93091bfa42c43554a77d52b702c06231508e5b22a78abff0dd2a"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/12-state-10-november.md",
+      "bytes": 5806,
+      "sha256": "2ca268af4da2cad68272966af6bf5c74e394fc7893f2eadacba1fcb1f50146b6"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/README.md",
+      "bytes": 961,
+      "sha256": "8e9979b2ae155bd14fc4f4fa7f84af835a94e9d758cc93fe8f504d836741248f"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/check-1-event-and-save.md",
+      "bytes": 6720,
+      "sha256": "5e076aa0a70aeb49af2492469c55509e9e74a5349522cca6f9b86d3482ddadac"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/check-2-commands-and-bodies.md",
+      "bytes": 5186,
+      "sha256": "4704a8b1ce789faa26fec2f7498dc7c2183fe518803414234286bf50169a59f9"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/check-3-power-ports.md",
+      "bytes": 7118,
+      "sha256": "faebe8696892a4b634e9000c45ebb4f54e9f7a7f4c74310d75e807e0d9181181"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/check-4-without-rust.md",
+      "bytes": 4944,
+      "sha256": "4b8987fdc381583bb9f71728b27ae853d1b2145d66ea5ec2d4286862811d474c"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/check-5-navigation-uinput-model.md",
+      "bytes": 3493,
+      "sha256": "cb39a6184a92ead21855f42cc9d92a74f76836295aa135f7ecbc8680fd586f51"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/check-6-table-names.md",
+      "bytes": 4519,
+      "sha256": "b75564785d5b501fd7b11eff4b9429931931fd33eea67c4206e4f43101645832"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/check-7-stock-kernel-driver.md",
+      "bytes": 3209,
+      "sha256": "e5780614ebf8c036c6cc70fd063bfe45ba06687d17171d47d24c4b827077a135"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/stok/history/check-8-chip-and-weights.md",
+      "bytes": 2748,
+      "sha256": "e2303bed242fb817c0e0e0ba16b0bf9d0adef6e31c07f380e430ee57302dd159"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/tablicy/README.md",
+      "bytes": 991,
+      "sha256": "9b7e13527447f7af849a2f34637c97c2827d1cfac274715c16f49d7f02b80422"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/tablicy/addresses.md",
+      "bytes": 4026,
+      "sha256": "cb3ca78c7b6908930b401339774751b9fcd827359f612542ecf8848c356c5554"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/tablicy/commands.md",
+      "bytes": 2975,
+      "sha256": "8b38607dee866ee14851e27ef48f3b9cce2f4934f0289a701bf46ddf4fb52d7f"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/tablicy/frame-header.md",
+      "bytes": 1965,
+      "sha256": "2edbeec42f886dc6c4f6c9733c0cd003ee3afec0bb10eae3af717a002fbf45fc"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/tablicy/kernel-and-daemon.md",
+      "bytes": 2414,
+      "sha256": "ab1730523b1f249323a8d62adff694ec9a264d035dc7e7cb776204a1c4b749fc"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/tablicy/names.md",
+      "bytes": 4832,
+      "sha256": "e8c4d6fd201477aa217c4e011f7b6ca050eb83ab090113f547210205f61f9e9f"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/tablicy/service-contracts.md",
+      "bytes": 4899,
+      "sha256": "b6ec97ab9c961e0dc288e8c7a04c59ab40003bec8da77ac5ec3b613ed1e10007"
+    },
+    {
+      "path": "reference/goodix-source/fingerprint/tablicy/weights.md",
+      "bytes": 3454,
+      "sha256": "80ac2d0f9ff100af413632152add716871631708888bc2a2eb009aabde064bc6"
+    },
+    {
+      "path": "reference/gxfp_user_facing.md",
+      "bytes": 36001,
+      "sha256": "3f34e3cc6f14e945e1d73d7596fffcd497c41d10b62221d54c3cdbbc97fdd5dd"
+    },
+    {
+      "path": "reference/trust-anchor-auth-biometrics.md",
+      "bytes": 97395,
+      "sha256": "5f6ccb37212079893aa9df650142833975217c5c8b199a9a2bf8b306d7b1e1ae"
+    }
+  ]
+}

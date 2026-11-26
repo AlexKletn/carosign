@@ -1,0 +1,29 @@
+<section class="panel platform-summary">
+  <div class="platform-state">
+    <img class="platform-state-icon" src="platform.svg" alt=""/>
+    <h2 class="platform-state-title">{state_label}</h2>
+    <div class={state_class}>
+      <span class="platform-status-mark"></span>
+      <span class="platform-status-text">{state}</span>
+    </div>
+  </div>
+  <div class={recovery_class}>
+    <span class="platform-status-text">{recovery_hint}</span>
+    <button disabled={restart_disabled} on:click=policy_restart_service test-id="platform-service-restart">{restart_label}</button>
+  </div>
+  <span class={restart_status_class}>{restart_status}</span>
+  <div class={counts_class}>
+    <div class="platform-metric">
+      <span class="platform-metric-label">{available_label}</span>
+      <span class="platform-metric-number">{available}</span>
+    </div>
+    <div class="platform-metric">
+      <span class="platform-metric-label">{unavailable_label}</span>
+      <span class="platform-metric-number">{unavailable}</span>
+    </div>
+    <div class="platform-metric">
+      <span class="platform-metric-label">{reconciliation_label}</span>
+      <span class="platform-metric-number">{reconciliation}</span>
+    </div>
+  </div>
+</section>

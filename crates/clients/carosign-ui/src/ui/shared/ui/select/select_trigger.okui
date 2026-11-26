@@ -1,0 +1,5 @@
+<button id={trigger_id} class="select-trigger" on:pointerdown=select_keep_open disabled={disabled}>
+  <slot name="leading"/>
+  <span class="select-label">{label}</span>
+  <span class="select-arrow"/>
+</button>

@@ -1,0 +1,330 @@
+@use "mixins";
+@use "variables";
+
+$fingerprint-icon-area-size: 32px;
+$fingerprint-row-padding: 12px;
+$fingerprint-row-gap: 12px;
+$fingerprint-label-inset: $fingerprint-row-padding + $fingerprint-icon-area-size + $fingerprint-row-gap;
+
+.fingerprint-list, .fingerprint-message {
+  @include mixins.stack;
+  min-width: 0;
+}
+
+.fingerprint-list { gap: 12px; }
+
+.fingerprint-list-note {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.fingerprint-delete-confirmation {
+  @include mixins.stack;
+  min-width: 0;
+  gap: 8px;
+  white-space: normal;
+}
+
+.fingerprint-confirmation-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section-band .fingerprint-rows {
+  background-color: var(--color-window-bg);
+  color: var(--color-window-fg);
+}
+
+.fingerprint-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fingerprint-rows {
+  @include mixins.stack;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: variables.$card-radius;
+  overflow: hidden;
+  background-color: var(--color-surface-bg);
+  color: var(--color-surface-fg);
+}
+
+.fingerprint-row {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 52px;
+  gap: $fingerprint-row-gap;
+  padding: 8px $fingerprint-row-padding;
+}
+
+.fingerprint-row + .fingerprint-row,
+.registered-fingerprint + .registered-fingerprint {
+  border-top: 1px solid var(--color-divider);
+}
+
+button.fingerprint-row-trigger {
+  display: grid;
+  grid-template-columns: $fingerprint-icon-area-size 1fr 16px;
+  width: 100%;
+  min-height: 52px;
+  border-radius: 0;
+  border-color: transparent;
+  background-color: transparent;
+  color: inherit;
+  text-align: start;
+  padding: 7px ($fingerprint-row-padding - 1px);
+
+  &:focus-visible { border-color: var(--color-focus-ring); }
+}
+
+.fingerprint-row-open {
+  background-color: var(--color-selected-bg);
+  color: var(--color-selected-fg);
+
+  > button.fingerprint-row-trigger:hover:not(:disabled),
+  > button.fingerprint-row-trigger:active:not(:disabled) {
+    background-image: none;
+  }
+}
+
+.registered-fingerprint:first-child,
+.registered-fingerprint:first-child > button.fingerprint-row-trigger {
+  border-top-left-radius: variables.$card-radius;
+  border-top-right-radius: variables.$card-radius;
+}
+
+.registered-fingerprint:last-child,
+.registered-fingerprint:last-child:not(.fingerprint-row-open) > button.fingerprint-row-trigger {
+  border-bottom-left-radius: variables.$card-radius;
+  border-bottom-right-radius: variables.$card-radius;
+}
+
+.fingerprint-row-disclosure {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.fingerprint-row-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 $fingerprint-row-padding 12px $fingerprint-label-inset;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 34px;
+    padding: 0 10px;
+    border-color: var(--color-border-strong);
+    background-color: transparent;
+    color: inherit;
+
+    &:focus-visible { border-color: var(--color-focus-ring); }
+  }
+
+  button.fingerprint-action-hidden { display: none; }
+}
+
+.fingerprint-row-actions button.fingerprint-row-delete {
+  border-color: transparent;
+  background-color: transparent;
+
+  &:focus-visible { border-color: var(--color-focus-ring); }
+}
+
+.fingerprint-row-actions button.fingerprint-row-save {
+  font-weight: 600;
+  color: var(--color-surface-fg);
+  background-color: var(--color-surface-bg);
+}
+
+.fingerprint-row-editor {
+  padding: 0 $fingerprint-row-padding;
+}
+
+input.fingerprint-name-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.fingerprint-action-hidden { display: none; }
+
+.fingerprint-icon-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $fingerprint-icon-area-size;
+  height: $fingerprint-icon-area-size;
+  flex: 0 0 $fingerprint-icon-area-size;
+  border-radius: variables.$control-radius;
+}
+
+.fingerprint-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.fingerprint-row-text {
+  flex: 1;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.fingerprint-message-detail-hidden { display: none; }
+
+.fingerprint-message {
+  align-items: stretch;
+  flex-shrink: 0;
+  gap: 8px;
+  text-align: center;
+
+  .value {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+.fingerprint-message-title {
+  margin: 0;
+  font-size: 1.2em;
+  font-weight: 600;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.fingerprint-enrollment {
+  @include mixins.stack;
+  box-sizing: border-box;
+  width: 100%;
+  align-self: center;
+  min-width: 0;
+  position: relative;
+  flex-shrink: 0;
+  transform-origin: center;
+  gap: 16px;
+  align-items: center;
+
+  .value {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: (variables.$sidebar-width + variables.$section-column-width)) {
+  .fingerprint-enrollment { width: variables.$section-column-width; }
+}
+
+.enrollment-visual {
+  @include mixins.stack;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 8px;
+}
+
+$enrollment-mark-size: 144px;
+$enrollment-ring-size: 188px;
+
+.enrollment-mark {
+  position: relative;
+  flex: 0 0 $enrollment-ring-size;
+  width: $enrollment-ring-size;
+  height: $enrollment-ring-size;
+}
+
+.enrollment-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $enrollment-ring-size;
+  height: $enrollment-ring-size;
+  pointer-events: none;
+}
+
+.enrollment-print {
+  position: absolute;
+  top: ($enrollment-ring-size - $enrollment-mark-size) * 0.5;
+  left: ($enrollment-ring-size - $enrollment-mark-size) * 0.5;
+  width: $enrollment-mark-size;
+  height: $enrollment-mark-size;
+  pointer-events: none;
+}
+
+.enrollment-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100%;
+  min-height: 3em;
+}
+
+.enrollment-event {
+  max-width: 100%;
+  text-align: center;
+}
+
+.enrollment-field {
+  @include mixins.stack;
+  width: 264px;
+  max-width: 100%;
+  min-width: 0;
+  gap: 4px;
+
+  input {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+.enrollment-field-hidden { display: none; }
+
+.enrollment-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+button.enrollment-discard-hidden { display: none; }
+
+button.enrollment-discard,
+button.enrollment-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+  min-height: 40px;
+  padding: 0 16px;
+  white-space: normal;
+}
+
+button.enrollment-discard {
+  color: var(--color-window-fg);
+  background-color: transparent;
+  border-color: transparent;
+
+  &:focus-visible { border-color: var(--color-focus-ring); }
+}
+
+button.enrollment-primary {
+  color: var(--color-selected-fg);
+  background-color: var(--color-selected-bg);
+  font-weight: 600;
+}

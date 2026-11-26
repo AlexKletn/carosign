@@ -1,0 +1,46 @@
+[package]
+name = "carosignd"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+publish = false
+default-run = "carosignd"
+
+[dependencies]
+carosign-core.workspace = true
+carosign-engine.workspace = true
+carosign-runtime.workspace = true
+carosign-linux.workspace = true
+carosign-linux-ipc.workspace = true
+carosign-protocol.workspace = true
+carosign-provider-sdk.workspace = true
+carosign-persistence.workspace = true
+carosign-evidence.workspace = true
+prost.workspace = true
+carosign-adapters.workspace = true
+libc.workspace = true
+zeroize = "1.9.0"
+futures-executor = "0.3"
+tempfile = "3"
+
+[lib]
+name = "carosignd"
+path = "src/lib.rs"
+
+[[bin]]
+name = "carosignd"
+path = "src/main.rs"
+
+[dev-dependencies]
+futures-executor = "0.3"
+carosign-fprintd-compat = { path = "../../clients/carosign-fprintd-compat" }
+dbus = "0.9.12"
+pam-carosign = { path = "../../clients/pam-carosign" }
+redb.workspace = true
+carosign-persistence = { workspace = true, features = ["legacy-fixtures"] }
+carosign-runtime = { workspace = true, features = ["resource-fixtures"] }
+
+[[bin]]
+name = "carosign-config"
+path = "src/bin/carosign-config/main.rs"

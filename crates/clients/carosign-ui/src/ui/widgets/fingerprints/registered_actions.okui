@@ -1,0 +1,6 @@
+<div class="fingerprint-row-actions">
+  <button class={action_class} on:click=fingerprint_rename test-id="fingerprint-rename">{rename_label}</button>
+  <button class={delete_class} on:click=fingerprint_delete test-id="fingerprint-delete">{delete_label}</button>
+  <button class={edit_action_class} on:click=fingerprint_rename_cancel>{cancel_label}</button>
+  <button class={save_class} disabled={save_disabled} on:click=fingerprint_rename_save>{save_label}</button>
+</div>

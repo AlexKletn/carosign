@@ -1,0 +1,23 @@
+[package]
+name = "carosignctl"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+publish = false
+
+[dependencies]
+carosign-l10n.workspace = true
+carosign-protocol.workspace = true
+carosign-linux.workspace = true
+carosign-linux-ipc.workspace = true
+libc.workspace = true
+prost.workspace = true
+
+[lib]
+name = "carosignctl"
+path = "src/lib.rs"
+
+[[bin]]
+name = "carosignctl"
+path = "src/main.rs"

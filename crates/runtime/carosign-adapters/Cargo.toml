@@ -1,0 +1,19 @@
+[package]
+name = "carosign-adapters"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+carosign-core.workspace = true
+carosign-engine.workspace = true
+carosign-evidence.workspace = true
+carosign-persistence.workspace = true
+carosign-protocol.workspace = true
+carosign-provider-sdk.workspace = true
+carosign-runtime.workspace = true
+
+[dev-dependencies]
+zeroize = "1.9"
+futures-executor = "0.3"
+carosign-persistence = { workspace = true, features = ["legacy-fixtures"] }

@@ -1,0 +1,19 @@
+[package]
+name = "carosign-linux"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+carosign-core.workspace = true
+libc.workspace = true
+sha1 = "0.10.6"
+sha2 = "0.10"
+dbus = "0.9.12"
+toml = "0.8.23"
+tar = { version = "0.4.46", default-features = false }
+
+[dev-dependencies]
+carosign-runtime.workspace = true
+carosign-protocol.workspace = true
+carosign-provider-sdk.workspace = true

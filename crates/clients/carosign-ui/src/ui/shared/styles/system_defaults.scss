@@ -1,0 +1,14 @@
+@use "sass:meta";
+@use "variables";
+
+@each $group, $values in (
+  defaults: variables.$system-defaults,
+  dark: variables.$system-dark,
+  light: variables.$system-light,
+) {
+  .#{$group} {
+    @each $name, $value in $values {
+      --#{$name}: #{meta.inspect($value)};
+    }
+  }
+}

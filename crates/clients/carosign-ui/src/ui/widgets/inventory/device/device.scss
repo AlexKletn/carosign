@@ -1,0 +1,62 @@
+@use "mixins";
+@use "variables";
+
+.device {
+  @include mixins.stack;
+  overflow: hidden;
+  border-radius: variables.$card-radius;
+  color: var(--color-window-fg);
+  background-color: var(--color-window-bg);
+  &:hover { background-image: var(--color-hover-overlay); }
+}
+.device button.device-toggle {
+  display: grid;
+  grid-template-columns: 36px 1fr 16px;
+  align-items: center;
+  min-width: 0;
+  padding: 12px 13px;
+  border-color: transparent;
+  border-radius: 0;
+  color: inherit;
+  background-color: transparent;
+  font-weight: 600;
+  text-align: start;
+  white-space: normal;
+  gap: 12px;
+  &:hover:not(:disabled), &:active:not(:disabled) { background-image: none; }
+  &:focus-visible { border-color: var(--color-focus-ring); }
+}
+.device-icon { width: 20px; height: 20px; }
+.device-chevron { width: 16px; height: 16px; }
+.device-state {
+  @include mixins.stack;
+  padding: 0 14px 10px 62px;
+  gap: 4px;
+}
+.device-disclosure {
+  @include mixins.stack;
+  min-width: 0;
+  padding: 0 14px 12px 62px;
+  gap: 4px;
+}
+.device-detail-hidden { display: none; }
+.device-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+.device-actions .status { min-width: 0; white-space: normal; overflow-wrap: anywhere; }
+.identifier {
+  color: var(--color-text-muted);
+  font-family: var(--obscur-sys-mono-family);
+  font-size: var(--obscur-sys-mono-size);
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.detail { color: var(--color-text-muted); font-size: variables.$detail-size; }
+.device-reason {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

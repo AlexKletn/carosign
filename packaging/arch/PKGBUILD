@@ -1,0 +1,53 @@
+# Package for testing the first Linux release.
+pkgname=carosign
+pkgver=0.1.0
+pkgrel=8
+pkgdesc='CaroSign — биометрическая платформа и клиентские адаптеры Linux'
+arch=('aarch64')
+license=('GPL-2.0-only')
+depends=('glibc' 'libgcc' 'dbus' 'pam' 'systemd')
+optdepends=('polkit: graphical administration of access policy')
+backup=('etc/carosign/carosignd.conf')
+options=('!strip' '!debug')
+source=()
+sha256sums=()
+
+package() {
+    local input=${CAROSIGN_BUILD_DIR:?Укажите каталог сборки}
+    local project=${CAROSIGN_PROJECT_DIR:?Укажите каталог проекта}
+    local name
+    [[ $input = /* && $project = /* ]] || return 1
+    for name in carosignd carosign-broker carosignctl carosign-config carosign-fprintd-compat; do
+        install -Dm755 "$input/$name" "$pkgdir/usr/bin/$name"
+    done
+    install -Dm755 "$input/libpam_carosign.so" "$pkgdir/usr/lib/security/pam_carosign.so"
+    for name in carosignd.service carosign-fprintd.service; do
+        install -Dm644 "$project/packaging/systemd/$name" "$pkgdir/usr/lib/systemd/system/$name"
+    done
+    install -Dm644 "$project/packaging/systemd/50-carosign.preset" \
+        "$pkgdir/usr/lib/systemd/system-preset/50-carosign.preset"
+    install -Dm644 "$project/packaging/systemd/carosign-fprintd.conf" \
+        "$pkgdir/usr/share/dbus-1/system.d/carosign-fprintd.conf"
+    install -Dm644 "$project/packaging/polkit/org.carosign.policy" \
+        "$pkgdir/usr/share/polkit-1/actions/org.carosign.policy"
+    install -Dm600 "$project/packaging/systemd/carosignd.conf" \
+        "$pkgdir/etc/carosign/carosignd.conf"
+    install -Dm644 "$project/crates/clients/carosign-l10n/locales/en.ftl" "$pkgdir/usr/share/carosign/locales/base/en/main.ftl"
+    install -Dm644 "$project/packaging/systemd/README.md" \
+        "$pkgdir/usr/share/doc/$pkgname/systemd.md"
+    install -Dm644 "$project/docs/contracts/linux-provider-profile.md" \
+        "$pkgdir/usr/share/doc/$pkgname/linux-provider-profile.md"
+    install -Dm644 "$project/packaging/arch/README.md" \
+        "$pkgdir/usr/share/doc/$pkgname/README.md"
+    (
+        cd "$pkgdir"
+        sha256sum usr/bin/carosignd usr/bin/carosign-broker usr/bin/carosignctl usr/bin/carosign-config \
+            usr/bin/carosign-fprintd-compat usr/lib/security/pam_carosign.so \
+            usr/lib/systemd/system/carosignd.service \
+            usr/lib/systemd/system/carosign-fprintd.service \
+            usr/lib/systemd/system-preset/50-carosign.preset \
+            usr/share/dbus-1/system.d/carosign-fprintd.conf \
+            usr/share/polkit-1/actions/org.carosign.policy \
+            > "usr/share/doc/$pkgname/SHA256SUMS"
+    )
+}

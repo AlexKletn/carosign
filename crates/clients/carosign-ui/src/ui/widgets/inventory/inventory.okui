@@ -1,0 +1,8 @@
+<section class="inventory">
+  <div class="inventory-content">
+    <h2 class="inventory-heading">{heading}</h2>
+    <div class="inventory-list">
+      <slot name="providers"/>
+    </div>
+  </div>
+</section>

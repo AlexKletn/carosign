@@ -1,0 +1,48 @@
+syntax = "proto3";
+package carosign.broker.v1;
+import "carosign/common/v1/common.proto";
+
+// IPC carried ONLY over a connected FD_ROLE_MEDIATED_SERVICE socket passed in
+// provider BindAuthenticator. One BrokerFrame per SOCK_SEQPACKET packet, no
+// length prefix; <= 65536 serialized bytes. Since v1.1, exactly ONE
+// SCM_RIGHTS FD is allowed on Call/CallResult iff external_body is present;
+// no ancillary FD on any other broker message.
+message BrokerFrame {
+  uint32 major = 1;  // must equal 1
+  uint32 minor = 2;  // 1 baseline for external body; ServiceReady announces protocol minor
+  uint64 frame_seq = 3; // starts 1 per direction; strictly consecutive
+  bytes request_id = 4; // 16B nonzero for Call/CallResult; 0B on Ready
+  oneof payload {
+    ServiceReady ready = 10;
+    Call call = 11;
+    CallResult call_result = 12;
+    ServiceFault fault = 13;
+  }
+}
+message ServiceReady {
+  bytes resource_id = 1;  // 16B from trusted broker-issued lease
+  uint32 service_schema = 2; // trusted handler schema version
+}
+// Detached immutable bulk body. The single accompanying FD MUST be a sealed
+// read-only memfd. The handler validates schema/shape, limits and identity.
+message ExternalBody {
+  uint64 offset = 1; // 0 for baseline; nonzero reserved for future revision
+  uint64 length = 2; // 1..8388608 B (8 MiB) and <= fd file size
+  bytes sha256 = 3; // exactly 32 bytes of the indicated region
+  uint64 file_size = 4; // trusted receiver must compare with fstat
+}
+message Call {
+  bytes operation_ref = 1; // 16B ID of broker-approved operation handler
+  bytes payload = 2; // <= 32768B, must pass trusted handler-specific decoding
+  bytes operation_id = 3; // 16B for operation-bound calls; empty for approved read-only probe
+  bytes mutation_id = 4; // 16B mandatory for persistently mutating handler
+  bytes command_id = 5; // 16B mandatory for persistently mutating handler
+  ExternalBody external_body = 6; // mutually exclusive with raw bulk in payload; exactly 1 FD
+}
+message CallResult {
+  bool success = 1;
+  bytes payload = 2; // <= 32768B, handler-specific response
+  carosign.common.v1.Error error = 3;
+  ExternalBody external_body = 4; // exactly one sealed memfd for large result, else absent
+}
+message ServiceFault { carosign.common.v1.Error error = 1; }

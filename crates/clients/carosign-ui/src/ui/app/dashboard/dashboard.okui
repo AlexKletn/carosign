@@ -1,0 +1,16 @@
+<app class={page_class} on:pointerdown=navigation_swipe on:keydown=policy_account_escape>
+  <div class={sidebar_class}><slot name="sidebar"/></div>
+  <div class={content_pane_class}>
+    <header class={header_class}>
+      <div class="window-drag-region" on:pointerdown=window_move/>
+      <button class={back_class} disabled={back_disabled} aria-label={back_label} on:click=navigate_back test-id="navigation-back">
+        <img class="header-back-chevron" src="chevron-left.svg" alt=""/>
+        {back_label}
+      </button>
+      <span class="title">{page_title}</span>
+    </header>
+    <main class={content_class}>
+      <slot name="sections"/>
+    </main>
+  </div>
+</app>

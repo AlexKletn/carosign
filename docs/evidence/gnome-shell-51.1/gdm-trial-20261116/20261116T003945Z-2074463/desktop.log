@@ -1,0 +1,51 @@
+ноя 16 03:40:24.164405 spinel gnome-shell[2071062]: Type GITypeInfo of property AccountsService.User::password-mode does not match return type GITypeInfo of getter get_password_mode. Falling back to slow path
+ноя 16 03:40:24.964037 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:25.123397 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:28.513938 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:28.945469 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:28.990372 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:29.347519 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:29.850697 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:30.276946 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:15.882239 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:16.028597 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:19.806383 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:20.255161 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:20.301533 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:20.669743 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:21.112751 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:21.559244 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:54.518409 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:54.680245 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:56.895512 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:57.337590 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:57.389635 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:57.723214 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:57.977105 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:58.423483 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:42:11.817817 spinel gnome-shell[2071062]: loading default theme (Adwaita)
+ноя 16 03:42:12.286836 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:42:12.760093 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:43:04.465274 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:04.623565 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:08.169791 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:08.606711 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:08.652297 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:09.022644 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:09.533599 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:09.949516 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:11.578539 spinel gnome-shell[2071062]: loading default theme (Adwaita)
+ноя 16 03:43:12.020808 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:43:12.660780 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:43:21.824781 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:21.992640 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:25.175059 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:25.617742 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:25.732927 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:25.998679 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:26.557004 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:27.002732 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:31.635548 spinel gdm-password][2076580]: gkr-pam: unlocked login keyring
+ноя 16 03:43:31.946564 spinel gnome-shell[2071062]: loading default theme (Adwaita)
+ноя 16 03:43:32.398391 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:43:32.830053 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1

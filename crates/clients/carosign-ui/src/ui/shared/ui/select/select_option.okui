@@ -1,0 +1,4 @@
+<button class={option_class}>
+  <slot name="leading"/>
+  <span>{label}</span>
+</button>

@@ -1,0 +1,31 @@
+# Глоссарий
+
+- **CaroSign:** независимая архитектура Core/Runtime/Provider Manager и extension contracts.
+- **Core:** библиотека доменных типов, переходов и инвариантов.
+- **Runtime:** исполнитель операций, арбитража, recovery и lifecycle.
+- **Provider Package:** установленный пакет аппаратного адаптера.
+- **Provider Worker:** отдельный process instance, выполняющий аппаратные операции по `carosign.provider`.
+- **Device:** физическое аппаратное устройство или доступная через ОС device entity.
+- **Authenticator:** логический биометрический механизм; один device может участвовать в нескольких.
+- **SubjectRef:** ссылка на идентичность, назначаемую внешней authority.
+- **Enrollment:** durable факт/ссылка на зарегистрированный биометрический фактор.
+- **Registry:** bindings + метаданные и поколения, не обязательно сами шаблоны.
+- **Provider-owned Storage:** opaque state, управляемое TA/устройством.
+- **Managed Storage:** software templates, шифруемые и хранимые вне hardware TA.
+- **Mutation:** enroll/remove/replace, способные изменить persistent state.
+- **MutationJournal:** durable запись намерений и этапов изменения.
+- **Reconciliation:** независимая проверка фактического состояния после indeterminate mutation.
+- **Matched:** claim со стороны алгоритма/provdier, ещё не право на действие.
+- **Evidence:** material, которое может быть проверено внешним trusted verifier.
+- **EvidenceAssessment:** подтверждённые свойства конкретного proof при заданной цели.
+- **AuthenticationAuthority:** внешний владелец политики аутентификации.
+- **Grant:** ограниченное полномочие на операцию, не просто числовой ID.
+- **ResourceLease:** управляемое право использования устройства/TEE/подсветки.
+- **Quiesce:** подтверждённая остановка аппаратной активности.
+- **Fencing:** изоляция старого worker/устройства от новых операций.
+- **DeviceEpoch:** поколение hardware binding; инвалидация устаревших ответов.
+- **Wire Protocol:** межпроцессный контракт, независимый от ABI языковых библиотек.
+- **SDK:** необязательная библиотека, облегчающая реализацию wire protocol.
+- **libfprint bridge:** incoming provider, использующий драйверы libfprint.
+- **fprintd adapter:** outgoing compatibility API для существующих Linux приложений.
+- **Veles adapter:** трансляция identity, authority, resources, evidence и UI в сервисы Veles.

@@ -1,0 +1,10 @@
+[package]
+name = "carosign-l10n"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+publish = false
+
+[dependencies]
+fluent-bundle = "0.16"
+unic-langid = "0.9"

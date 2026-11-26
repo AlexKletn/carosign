@@ -1,0 +1,13 @@
+[package]
+name = "carosign-fence-inspect"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+carosign-persistence = { path = "../../runtime/carosign-persistence" }
+
+[dev-dependencies]
+carosign-core = { path = "../../core/carosign-core" }

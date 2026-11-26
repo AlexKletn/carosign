@@ -1,0 +1,22 @@
+[package]
+name = "carosign-linux-ipc"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+carosign-protocol.workspace = true
+carosign-core.workspace = true
+prost.workspace = true
+carosign-engine.workspace = true
+carosign-provider-sdk.workspace = true
+libc.workspace = true
+sha2 = "0.10"
+zeroize = "1.9.0"
+carosign-linux.workspace = true
+carosign-adapters.workspace = true
+carosign-runtime.workspace = true
+carosign-persistence.workspace = true
+
+[dev-dependencies]
+futures-executor = "0.3"

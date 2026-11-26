@@ -1,0 +1,4 @@
+<div class="fingerprint-row fingerprint-row-editor">
+  <div class="fingerprint-icon-area"><img class="fingerprint-icon" src="fingerprint.svg" alt=""/></div>
+  <input class="fingerprint-name-input" id="fingerprint-inline-name" test-id="fingerprint-inline-name" value={name} aria-label={name_label} on:input=fingerprint_rename_input on:keydown=fingerprint_rename_key/>
+</div>

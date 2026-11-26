@@ -1,0 +1,149 @@
+ноя 16 03:40:24.164405 spinel gnome-shell[2071062]: Type GITypeInfo of property AccountsService.User::password-mode does not match return type GITypeInfo of getter get_password_mode. Falling back to slow path
+ноя 16 03:40:24.964037 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:25.123397 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:28.513938 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:28.945469 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:28.990372 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:29.347519 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:29.850697 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:40:30.276946 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:15.882239 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:16.028597 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:19.806383 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:20.255161 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:20.301533 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:20.669743 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:21.112751 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:21.559244 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:54.518409 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:54.680245 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:56.895512 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:57.337590 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:57.389635 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:57.723214 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:57.977105 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:41:58.423483 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:42:11.817817 spinel gnome-shell[2071062]: loading default theme (Adwaita)
+ноя 16 03:42:12.286836 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:42:12.760093 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:43:04.465274 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:04.623565 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:08.169791 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:08.606711 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:08.652297 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:09.022644 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:09.533599 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:09.949516 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:11.578539 spinel gnome-shell[2071062]: loading default theme (Adwaita)
+ноя 16 03:43:12.020808 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:43:12.660780 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:43:21.824781 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:21.992640 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:25.175059 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:25.617742 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:25.732927 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:25.998679 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:26.557004 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:27.002732 spinel gnome-shell[2071062]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:43:31.635548 spinel gdm-password][2076580]: gkr-pam: unlocked login keyring
+ноя 16 03:43:31.946564 spinel gnome-shell[2071062]: loading default theme (Adwaita)
+ноя 16 03:43:32.398391 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:43:32.830053 spinel gnome-shell[2071062]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:51:16.100147 spinel gnome-shell[2071062]: Failed to get update info from gnome-software: GDBus.Error:org.gtk.GDBus.UnmappedGError.Quark._g_2dio_2derror_2dquark.Code15: Failed to get offline update state: no plugin could handle get of an offline update state
+ноя 16 03:51:18.395117 spinel gnome-shell[2071062]: Owner of volume monitor org.gtk.vfs.AfcVolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+ноя 16 03:51:18.395673 spinel gnome-shell[2071062]: Owner of volume monitor org.gtk.vfs.GoaVolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+ноя 16 03:51:18.396165 spinel gnome-shell[2071062]: Owner of volume monitor org.gtk.vfs.GPhoto2VolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+ноя 16 03:51:18.397124 spinel gnome-shell[2071062]: Owner of volume monitor org.gtk.vfs.MTPVolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+ноя 16 03:51:18.414321 spinel gnome-shell[2071062]: Owner of volume monitor org.gtk.vfs.UDisks2VolumeMonitor disconnected from the bus; removing drives/volumes/mounts
+ноя 16 03:51:18.533308 spinel gnome-shell[2071062]: Shutting down GNOME Shell
+ноя 16 03:51:19.262255 spinel gdm-password][2070733]: pam_unix(gdm-password:session): session closed for user alex
+ноя 16 03:51:20.471283 spinel gnome-shell[2080119]: Adding GResources overlay '/org/gnome/shell/gdm=/run/biometric-mock/gnome-greeter-51.1'
+ноя 16 03:51:20.489567 spinel gnome-shell[2080119]: Running GNOME Shell (using mutter 51.1) as a Wayland display server
+ноя 16 03:51:20.544647 spinel gnome-shell[2080119]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:51:20.545334 spinel gnome-shell[2080119]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:51:20.545368 spinel gnome-shell[2080119]: Thread 'KMS thread' will be using high priority scheduling
+ноя 16 03:51:20.609735 spinel gnome-shell[2080119]: Added device '/dev/dri/card0' (msm) using atomic mode setting.
+ноя 16 03:51:20.612213 spinel gnome-shell[2080119]: Created gbm renderer for '/dev/dri/card0'
+ноя 16 03:51:20.612225 spinel gnome-shell[2080119]: GPU /dev/dri/card0 selected primary from builtin panel presence
+ноя 16 03:51:20.614735 spinel gnome-shell[2080119]: Obtained a high priority EGL context
+ноя 16 03:51:20.941067 spinel gnome-shell[2080119]: Using public X11 display :1024, (using unix:/tmp/.X11-unix/X1025 for managed services)
+ноя 16 03:51:20.941166 spinel gnome-shell[2080119]: Using Wayland display name 'wayland-0'
+ноя 16 03:51:21.264839 spinel gnome-shell[2080119]: Opened file '/run/biometric-mock/gnome-greeter-51.1/userVerifier.js' as a resource overlay
+ноя 16 03:51:21.266217 spinel gnome-shell[2080119]: Opened file '/run/biometric-mock/gnome-greeter-51.1/authServicesLegacy.js' as a resource overlay
+ноя 16 03:51:21.267944 spinel gnome-shell[2080119]: Opened file '/run/biometric-mock/gnome-greeter-51.1/authServices.js' as a resource overlay
+ноя 16 03:51:21.460781 spinel gnome-shell[2080119]: Unset XDG_SESSION_ID, getCurrentSessionProxy() called outside a user session. Asking logind directly.
+ноя 16 03:51:21.558448 spinel gnome-shell[2080119]: Registering session with GDM
+ноя 16 03:51:21.816004 spinel gnome-shell[2080119]: Unset XDG_SESSION_ID, getCurrentSessionProxy() called outside a user session. Asking logind directly.
+ноя 16 03:51:21.848106 spinel gnome-shell[2080119]: JS ERROR: Error: Argument string may not be null
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:84:29
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:137:27
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:124:41
+                                                       _init/this.Variant._new_internal@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:301:35
+                                                       _setState@resource:///org/gnome/shell/misc/brightnessManager.js:209:23
+                                                       _saveBrightnesses/this._saveBrightnessId<@resource:///org/gnome/shell/misc/brightnessManager.js:250:18
+                                                       _init/this.timeout_add_once/id<@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:439:13
+                                                       @resource:///org/gnome/shell/ui/init.js:20:20
+ноя 16 03:51:21.904819 spinel gnome-shell[2080119]: Will monitor session 577
+ноя 16 03:51:21.914156 spinel gnome-shell[2080119]: Error looking up permission: GDBus.Error:org.freedesktop.portal.Error.NotFound: No entry for geolocation
+ноя 16 03:51:21.914799 spinel gnome-shell[2080119]: Will monitor session 577
+ноя 16 03:51:22.136056 spinel gnome-shell[2080119]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:51:22.204358 spinel gnome-shell[2080119]: Failed to record usage: GDBus.Error:org.freedesktop.MalcontentTimer1.Child.Error.IdentifyingUser: Ошибка при идентификации пользователя: Недопустимый или неизвестный пользователь
+ноя 16 03:51:22.623696 spinel gnome-shell[2080119]: Registering display with GDM
+ноя 16 03:51:56.545518 spinel gdm-fingerprint][2081489]: pam_unix(gdm-fingerprint:session): session opened for user alex(uid=1000) by alex(uid=0)
+ноя 16 03:51:56.662160 spinel gdm-fingerprint][2081489]: gkr-pam: couldn't unlock the login keyring.
+ноя 16 03:51:57.550519 spinel gnome-shell[2082059]: Adding GResources overlay '/org/gnome/shell/gdm=/run/biometric-mock/gnome-shell-51.1'
+ноя 16 03:51:57.567422 spinel gnome-shell[2082059]: Running GNOME Shell (using mutter 51.1) as a Wayland display server
+ноя 16 03:51:57.626790 spinel gnome-shell[2082059]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:51:57.627253 spinel gnome-shell[2082059]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:51:57.627273 spinel gnome-shell[2082059]: Thread 'KMS thread' will be using high priority scheduling
+ноя 16 03:51:57.686110 spinel gnome-shell[2082059]: Added device '/dev/dri/card0' (msm) using atomic mode setting.
+ноя 16 03:51:57.688933 spinel gnome-shell[2082059]: Created gbm renderer for '/dev/dri/card0'
+ноя 16 03:51:57.688943 spinel gnome-shell[2082059]: GPU /dev/dri/card0 selected primary from builtin panel presence
+ноя 16 03:51:57.692183 spinel gnome-shell[2082059]: Obtained a high priority EGL context
+ноя 16 03:51:57.944087 spinel gnome-shell[2082059]: Using public X11 display :0, (using unix:/tmp/.X11-unix/X1 for managed services)
+ноя 16 03:51:57.944162 spinel gnome-shell[2082059]: Using Wayland display name 'wayland-0'
+ноя 16 03:51:58.237920 spinel gnome-shell[2082059]: Opened file '/run/biometric-mock/gnome-shell-51.1/userVerifier.js' as a resource overlay
+ноя 16 03:51:58.240763 spinel gnome-shell[2082059]: Opened file '/run/biometric-mock/gnome-shell-51.1/authServices.js' as a resource overlay
+ноя 16 03:51:58.513940 spinel gnome-shell[2082059]: Unset XDG_SESSION_ID, getCurrentSessionProxy() called outside a user session. Asking logind directly.
+ноя 16 03:51:58.671439 spinel gnome-shell[2082059]: Registering session with GDM
+ноя 16 03:51:58.913447 spinel gnome-shell[2082059]: JS ERROR: Error: Argument string may not be null
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:84:29
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:137:27
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:124:41
+                                                       _init/this.Variant._new_internal@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:301:35
+                                                       _setState@resource:///org/gnome/shell/misc/brightnessManager.js:209:23
+                                                       _saveBrightnesses/this._saveBrightnessId<@resource:///org/gnome/shell/misc/brightnessManager.js:250:18
+                                                       _init/this.timeout_add_once/id<@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:439:13
+                                                       @resource:///org/gnome/shell/ui/init.js:20:20
+ноя 16 03:51:59.505558 spinel gnome-shell[2082059]: Error looking up permission: GDBus.Error:org.freedesktop.portal.Error.NotFound: No entry for geolocation
+ноя 16 03:51:59.507619 spinel gnome-shell[2082059]: Will monitor session 583
+ноя 16 03:51:59.846409 spinel gnome-shell[2080119]: Gio.IOErrorEnum: GDBus.Error:org.freedesktop.MalcontentTimer1.Child.Error.IdentifyingUser: Ошибка при идентификации пользователя: Недопустимый или неизвестный пользователь
+                                                       
+                                                       Stack trace:
+                                                         asyncCallback@resource:///org/gnome/gjs/modules/core/overrides/Gio.js:117:23
+                                                         @resource:///org/gnome/shell/ui/init.js:20:20
+                                                         
+ноя 16 03:52:00.179079 spinel gnome-shell[2082059]: loading default theme (Adwaita)
+ноя 16 03:52:00.517416 spinel gnome-shell[2082059]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:52:00.841088 spinel gnome-shell[2082059]: StImageContent initialized with invalid preferred size: -1x-1
+ноя 16 03:52:01.111446 spinel gnome-shell[2082059]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:52:01.113077 spinel gnome-shell[2082059]: clutter_actor_add_child: assertion 'child->priv->parent == NULL' failed
+ноя 16 03:52:01.113105 spinel gnome-shell[2082059]: clutter_actor_insert_child_below: assertion 'child->priv->parent == NULL' failed
+ноя 16 03:52:01.304226 spinel gnome-shell[2082059]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:52:01.318793 spinel gnome-shell[2082059]: Failed to make thread 'KMS thread' high priority scheduled: GDBus.Error:org.freedesktop.DBus.Error.NameHasNoOwner: Destination does not exist
+ноя 16 03:52:01.529931 spinel gnome-shell[2082059]: JS ERROR: Error: Argument string may not be null
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:84:29
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:137:27
+                                                       _packVariant@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:124:41
+                                                       _init/this.Variant._new_internal@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:301:35
+                                                       _setState@resource:///org/gnome/shell/misc/brightnessManager.js:209:23
+                                                       _saveBrightnesses/this._saveBrightnessId<@resource:///org/gnome/shell/misc/brightnessManager.js:250:18
+                                                       _init/this.timeout_add_once/id<@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:439:13
+                                                       @resource:///org/gnome/shell/ui/init.js:20:20
+ноя 16 03:52:02.088625 spinel gnome-shell[2082059]: GNOME Shell started at Mon Nov 16 2026 03:51:58 GMT+0300 (Москва, стандартное время)
+ноя 16 03:52:02.090397 spinel gnome-shell[2082059]: Registering display with GDM
+ноя 16 03:52:02.293836 spinel gnome-shell[2080119]: Shutting down GNOME Shell
+ноя 16 03:52:02.295153 spinel gnome-shell[2080119]: Could not load a pixbuf from icon theme.
+                                                       This may indicate that pixbuf loaders or the mime database could not be found.
+ноя 16 03:52:02.358933 spinel gnome-shell[2080119]: Connection to xwayland lost
+ноя 16 03:52:02.361726 spinel gnome-shell[2080119]: Using public X11 display :1024, (using unix:/tmp/.X11-unix/X1025 for managed services)

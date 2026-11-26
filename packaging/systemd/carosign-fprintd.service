@@ -1,0 +1,17 @@
+[Unit]
+Description=CaroSign — адаптер совместимости fprintd
+Requires=carosignd.service
+After=carosignd.service dbus.service
+Conflicts=fprintd.service
+
+[Service]
+Type=exec
+User=root
+Group=root
+ExecStart=/usr/bin/carosign-fprintd-compat
+Restart=on-failure
+RestartSec=2s
+NoNewPrivileges=yes
+
+[Install]
+WantedBy=multi-user.target

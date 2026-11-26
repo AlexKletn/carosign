@@ -1,0 +1,32 @@
+[package]
+name = "carosign-broker"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+publish = false
+
+[dependencies]
+carosign-core.workspace = true
+carosign-linux.workspace = true
+carosign-persistence.workspace = true
+carosign-protocol.workspace = true
+carosign-provider-sdk.workspace = true
+prost.workspace = true
+libc.workspace = true
+rustix = { version = "1.1.6", features = ["net", "event"] }
+
+[dev-dependencies]
+carosign-engine.workspace = true
+carosign-linux-ipc.workspace = true
+carosign-adapters.workspace = true
+carosign-runtime = { workspace = true, features = ["resource-fixtures"] }
+futures-executor = "0.3"
+
+[lib]
+name = "carosign_broker"
+path = "src/lib.rs"
+
+[[bin]]
+name = "carosign-broker"
+path = "src/main.rs"

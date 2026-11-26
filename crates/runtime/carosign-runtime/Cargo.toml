@@ -1,0 +1,24 @@
+[package]
+name = "carosign-runtime"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[features]
+# Enables the test broker in debug builds.
+resource-fixtures = []
+
+[dependencies]
+carosign-core.workspace = true
+carosign-engine.workspace = true
+carosign-persistence.workspace = true
+carosign-evidence.workspace = true
+carosign-provider-sdk.workspace = true
+carosign-protocol.workspace = true
+zeroize = "1.9"
+sha2 = "0.10"
+toml = "0.8.23"
+
+[dev-dependencies]
+futures-executor = "0.3"
+prost.workspace = true

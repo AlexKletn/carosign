@@ -1,0 +1,196 @@
+syntax = "proto3";
+package carosign.client.v1;
+import "carosign/common/v1/common.proto";
+
+// One ClientFrame per seqpacket packet. max 65536 serialized bytes.
+// request_id: exactly 16 nonzero bytes for request and direct response.
+// operation_id: exactly 16 bytes if operation-related; not a bearer token.
+// event_sequence monotonic per operation, starting 1. No arbitrary evidence bytes.
+message ClientFrame {
+  uint32 major = 1; // 1
+  uint32 minor = 2; // selected protocol minor, baseline 0
+  bytes request_id = 3;
+  bytes operation_id = 4;
+  uint64 event_sequence = 5;
+  oneof payload {
+    Hello hello = 10;
+    HelloAck hello_ack = 11;
+    ListAuthenticators list_authenticators = 12;
+    Authenticators authenticators = 13;
+    GetAuthenticator get_authenticator = 14;
+    Authenticator authenticator = 15;
+    ListEnrollments list_enrollments = 16;
+    Enrollments enrollments = 17;
+    BeginVerification begin_verification = 20;
+    BeginEnrollment begin_enrollment = 21;
+    BeginRemoval begin_removal = 22;
+    OperationAccepted operation_accepted = 23;
+    ObserveOperation observe_operation = 24;
+    GetOperation get_operation = 25;
+    OperationSnapshot operation_snapshot = 26;
+    OperationEvent operation_event = 27;
+    CancelOperation cancel_operation = 28;
+    CancellationReceipt cancellation_receipt = 29;
+    GetHealth get_health = 30;
+    Health health = 31;
+    ProtocolError protocol_error = 90;
+  }
+}
+message Hello {
+  uint32 major = 1;
+  uint32 min_minor = 2;
+  uint32 max_minor = 3;
+  bool capture_feedback_v1 = 4;
+}
+message HelloAck {
+  uint32 major = 1;
+  uint32 selected_minor = 2;
+  bytes connection_id = 3; // 16B server-generated, NOT authorization
+  bool capture_feedback_v1 = 4;
+  bool verification_enrollment_selector = 5;
+}
+message ListAuthenticators {}
+message Authenticators {
+  repeated carosign.common.v1.AuthenticatorDescriptor entries = 1; // bounded by server policy
+  ProviderInventory providers = 2;
+}
+message ProviderInventory {
+  repeated ProviderPublication publications = 1;
+}
+message ProviderPublication {
+  string name = 1;
+  bool reachable = 2;
+  repeated bytes authenticator_ids = 3;
+}
+message GetAuthenticator { bytes authenticator_id = 1; /*16B*/ }
+message Authenticator { carosign.common.v1.AuthenticatorDescriptor descriptor = 1; }
+message ListEnrollments {
+  carosign.common.v1.SubjectSelector subject = 1;
+  bytes authenticator_id = 2; // 16B
+  bytes authority_request_ref = 3; // untrusted hint resolved by server
+}
+message Enrollments {
+  repeated carosign.common.v1.EnrollmentSummary entries = 1; // bounded
+}
+message BeginVerification {
+  bytes idempotency_key = 1; // 16B
+  carosign.common.v1.SubjectSelector subject = 2;
+  bytes authenticator_id = 3; // 16B
+  carosign.common.v1.VerificationPurpose purpose_hint = 4; // untrusted until resolved
+  bytes authority_request_ref = 5; // scoped pointer only; not grant
+  carosign.common.v1.EnrollmentRef enrollment = 6;
+  bool report_matched_enrollment = 7;
+}
+message BeginEnrollment {
+  bytes idempotency_key = 1; // 16B
+  carosign.common.v1.SubjectSelector subject = 2;
+  bytes authenticator_id = 3; // 16B
+  string label = 4; // <=64 UTF-8 bytes
+  carosign.common.v1.EnrollmentRef replace = 5;
+  bytes authority_request_ref = 6;
+}
+message BeginRemoval {
+  bytes idempotency_key = 1; // 16B
+  carosign.common.v1.SubjectSelector subject = 2;
+  carosign.common.v1.EnrollmentRef enrollment = 3; // includes expected generation
+  bytes authority_request_ref = 4;
+}
+message OperationAccepted {
+  bytes operation_id = 1; // 16B
+  uint64 first_event_sequence = 2;
+  carosign.common.v1.BootDeadline deadline = 3;
+}
+message ObserveOperation {
+  bytes operation_id = 1; // 16B
+  uint64 after_sequence = 2; // 0 for from beginning where retained
+}
+message GetOperation { bytes operation_id = 1; }
+
+enum OperationPhase {
+  OP_PHASE_UNSPECIFIED = 0;
+  OP_QUEUED = 1;
+  OP_WAITING_FOR_USER = 2;
+  OP_RUNNING = 3;
+  OP_CANCELLING = 4;
+  OP_FINALIZING = 5;
+  OP_TERMINAL = 6;
+  OP_NEEDS_RECONCILIATION = 7;
+}
+enum EventKind {
+  EVENT_UNSPECIFIED = 0;
+  EVENT_STATE_CHANGED = 1;
+  EVENT_PLACE_FINGER = 2;
+  EVENT_MOVE_FINGER = 3;
+  EVENT_REMOVE_FINGER = 4;
+  EVENT_RETRY = 5;
+  EVENT_WORKING = 6;
+  EVENT_PROGRESS = 7;
+  EVENT_GAP = 8;
+  EVENT_TERMINAL = 9;
+}
+enum VerificationResult {
+  VERIFY_RESULT_UNSPECIFIED = 0;
+  VERIFY_FACTOR_ACCEPTED = 1; // scoped factor, NOT OS authorization
+  VERIFY_NOT_MATCHED = 2;
+  VERIFY_NO_SAMPLE = 3;
+  VERIFY_CANCELLED = 4;
+  VERIFY_UNAVAILABLE = 5;
+  VERIFY_FAILED = 6;
+}
+enum MutationResult {
+  MUTATION_RESULT_UNSPECIFIED = 0;
+  MUTATION_COMMITTED = 1;
+  MUTATION_NO_CHANGE = 2;
+  MUTATION_NEEDS_RECONCILIATION = 3;
+  MUTATION_FAILED = 4;
+}
+message TerminalResult {
+  oneof kind {
+    VerificationTerminal verification = 1;
+    MutationTerminal mutation = 2;
+  }
+}
+message VerificationTerminal {
+  VerificationResult result = 1;
+  carosign.common.v1.Error error = 2;
+  carosign.common.v1.EnrollmentRef matched_enrollment = 3;
+}
+message MutationTerminal {
+  MutationResult result = 1;
+  carosign.common.v1.EnrollmentRef enrollment = 2;
+  bytes mutation_id = 3; // 16B if pending
+  carosign.common.v1.Error error = 4;
+}
+message OperationSnapshot {
+  bytes operation_id = 1;
+  OperationPhase phase = 2;
+  uint64 last_event_sequence = 3;
+  TerminalResult terminal = 4; // optional until terminal
+}
+message OperationEvent {
+  bytes operation_id = 1;
+  uint64 sequence = 2;
+  EventKind kind = 3;
+  OperationPhase phase = 4;
+  uint32 percent = 5; // 0..100 for progress only
+  uint64 gap_after_sequence = 6; // for EVENT_GAP only
+  OperationSnapshot snapshot = 7; // for GAP / state resync
+  TerminalResult terminal = 8; // only for EVENT_TERMINAL
+  carosign.common.v1.CaptureFeedback feedback = 9;
+  carosign.common.v1.CaptureState capture_state = 10;
+}
+message CancelOperation { bytes operation_id = 1; }
+enum CancelReceiptKind {
+  CANCEL_RECEIPT_UNSPECIFIED = 0;
+  CANCEL_RECEIPT_REQUESTED = 1;
+  CANCEL_RECEIPT_ALREADY_TERMINAL = 2;
+}
+message CancellationReceipt { CancelReceiptKind result = 1; }
+message GetHealth {}
+message Health {
+  bool service_ready = 1;
+  uint32 available_authenticators = 2;
+  uint32 unavailable_authenticators = 3;
+  uint32 scopes_needing_reconciliation = 4;
+}
+message ProtocolError { carosign.common.v1.Error error = 1; }

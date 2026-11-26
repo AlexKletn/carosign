@@ -1,0 +1,52 @@
+syntax = "proto3";
+package carosign.provider_rendezvous.v1;
+
+import "carosign/common/v1/common.proto";
+
+message Request {
+  uint32 version = 1;
+  bytes request_id = 2;
+  oneof action {
+    Describe describe = 10;
+    OpenSession open_session = 11;
+  }
+}
+
+message Describe {}
+
+message OpenSession {
+  bytes authenticator_id = 1;
+  uint64 device_epoch = 2;
+  bytes worker_instance_id = 3;
+  string worker_socket = 4;
+  bytes nonce = 5;
+  bool declaration_only = 6;
+  bool owner_channel_required = 7;
+}
+
+message Response {
+  uint32 version = 1;
+  bytes request_id = 2;
+  oneof result {
+    Inventory inventory = 10;
+    SessionOpening session_opening = 11;
+    Refused refused = 12;
+  }
+}
+
+message Inventory {
+  repeated carosign.common.v1.AuthenticatorDescriptor authenticators = 1;
+}
+
+message SessionOpening {}
+
+message Refused {}
+
+message WorkerProof {
+  uint32 version = 1;
+  bytes request_id = 2;
+  bytes authenticator_id = 3;
+  uint64 device_epoch = 4;
+  bytes worker_instance_id = 5;
+  bytes nonce = 6;
+}

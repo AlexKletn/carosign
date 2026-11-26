@@ -1,0 +1,4 @@
+<div id={trigger_id} class="select-trigger select-search-trigger" on:pointerdown=select_keep_open>
+  <slot name="leading"/>
+  <input id="select-search" on:keydown=select_search_key value={query} aria-label={search_label} on:input=select_search/>
+</div>

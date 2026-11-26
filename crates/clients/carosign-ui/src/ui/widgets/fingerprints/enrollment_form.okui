@@ -1,0 +1,20 @@
+<section class="fingerprint-enrollment" style={form_style}>
+  <div class="enrollment-visual">
+    <div class="enrollment-hint">
+      <span class={event_class}>{instruction}</span>
+    </div>
+    <div class="enrollment-mark">
+      <slot name="fingerprint_print"/>
+      <slot name="progress_ring"/>
+    </div>
+    <span class={progress_class}>{progress}</span>
+  </div>
+  <div class={field_class}>
+    <span class="label">{name_label}</span>
+    <input test-id="enrollment-name" disabled={name_disabled} value={value} aria-label={name_label} on:input=fingerprint_name/>
+  </div>
+  <div class="enrollment-actions">
+    <button class={discard_class} disabled={cancel_disabled} on:click=fingerprint_discard test-id="fingerprint-discard">{discard_label}</button>
+    <button class={action_class} disabled={action_disabled} on:click=fingerprint_next>{action_label}</button>
+  </div>
+</section>

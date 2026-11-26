@@ -1,0 +1,28 @@
+#type	timestamp	serial	sender	destination	path	interface	member
+#					in_reply_to
+sig	1794789585.282593	4294967295	org.freedesktop.DBus	:1.959991	/org/freedesktop/DBus	org.freedesktop.DBus	NameAcquired
+sig	1794789585.282649	4294967295	org.freedesktop.DBus	:1.959991	/org/freedesktop/DBus	org.freedesktop.DBus	NameLost
+mc	1794789602.012777	3	:1.960062	org.freedesktop.DBus	/org/freedesktop/DBus	org.freedesktop.DBus	AddMatch
+mc	1794789631.180903	251	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789631.183273	4	:1.960062	:1.959677	251
+mr	1794789631.221023	5	:1.960062	:1.959677	259
+mc	1794789631.459645	274	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789631.460194	6	:1.960062	:1.959677	274
+mc	1794789631.684298	286	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789631.685665	7	:1.960062	:1.959677	286
+mr	1794789631.698284	8	:1.960062	:1.959677	289
+mc	1794789729.153418	327	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789729.155923	9	:1.960062	:1.959677	327
+mc	1794789729.400678	339	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789729.401201	10	:1.960062	:1.959677	339
+mr	1794789729.421497	11	:1.960062	:1.959677	344
+mc	1794789791.070918	374	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789791.071846	12	:1.960062	:1.959677	374
+mc	1794789791.294380	386	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789791.294663	13	:1.960062	:1.959677	386
+mr	1794789791.321782	14	:1.960062	:1.959677	391
+mc	1794789807.884674	421	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789807.885395	15	:1.960062	:1.959677	421
+mc	1794789808.303560	433	:1.959677	:1.960062	/net/reactivated/Fprint/Manager	net.reactivated.Fprint.Manager	GetDefaultDevice
+mr	1794789808.304455	16	:1.960062	:1.959677	433
+mr	1794789808.320077	17	:1.960062	:1.959677	438
