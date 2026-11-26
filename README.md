@@ -1,74 +1,79 @@
 # CaroSign
 
+[Русский](README.ru.md)
+
 > Hail, Meat-Bioform!
 
-CaroSign регистрирует, проверяет и удаляет отпечатки через отдельные
-аппаратные провайдеры. Клиенты Linux подключаются через `carosignctl`,
-PAM или D-Bus-интерфейс fprintd. Состояние службы, провайдеров и устройств
-можно посмотреть в [CaroSign](crates/clients/carosign-ui/README.md).
+CaroSign enrolls, verifies, and deletes fingerprints through separate hardware
+providers. Linux clients connect through `carosignctl`, PAM, or the fprintd D-Bus
+interface. The [CaroSign desktop app](crates/clients/carosign-ui/README.md) shows the
+status of the service, providers, and devices.
 
-[Спецификация v0.6.6](docs/specs/README.md) ·
-[Документация](docs/README.md) ·
-[Терминальные инструменты](docs/guides/headless-clients.md) ·
-[Установка на Arch Linux](packaging/arch/README.md)
+[Specification v0.6.6](docs/specs/README.md) ·
+[Documentation](docs/README.md) ·
+[Command-line tools](docs/guides/headless-clients.md) ·
+[Arch Linux installation](packaging/arch/README.md)
 
-Язык и стиль клиентских подсказок выбираются отдельно. Каталоги
-устанавливаются пакетами. См. [локализацию клиентов](docs/contracts/client-localization.md).
+Clients let you choose the language and style of prompts independently.
+Translation catalogs are available as packages. See the
+[client localization guide](docs/contracts/client-localization.md).
 
-## Текущий статус
+## Current status
 
-**Платформа ещё не принята к выпуску.** Linux-состав обслуживает клиентский
-сокет и запускает отдельные процессы посредника и провайдера. В испытательном
-составе с моком проверены регистрация, проверка и удаление, включая сценарии
-через PAM и D-Bus-адаптер fprintd; отмена и потеря клиента при изменении
-оставляют неопределённую область закрытой для сверки. Положительный программный
-результат не означает аппаратной аттестации.
+**CaroSign is still in development.** The Linux service listens on a client
+socket and runs the broker and provider in separate processes. Tests with the
+mock provider cover enrollment, verification, and removal, including flows
+through PAM and the fprintd D-Bus adapter. If a mutation is cancelled or the
+client disconnects, CaroSign keeps any affected scope with an uncertain state
+blocked until reconciliation.
 
-Платформа также испытана на Linux с отдельным аппаратным провайдером TB371FC:
-регистрация, проверка и вход через PAM работали на устройстве. Это не
-подтверждает аппаратную аттестацию или готовность всех сценариев к выпуску;
-восстановление ресурсов и интеграция графических сред требуют дальнейшей работы.
+Enrollment, verification, and PAM login have also been tested on Linux with the
+separate TB371FC hardware provider. Hardware attestation is outside the scope of
+these tests. Resource recovery and desktop integration still need work before
+release.
 
-Для первого выпуска Linux действует упрощённая системная модель доверия из
-[профиля выпуска](docs/specs/engineering/implementation-v06/35-first-release-scope.md).
-Формат профиля провайдера описан в [linux-provider-profile.md](docs/contracts/linux-provider-profile.md),
-подготовленный unit и пример конфигурации — в [packaging/systemd](packaging/systemd/README.md).
+The initial Linux release uses the simplified system trust model described in
+the [release scope](docs/specs/engineering/implementation-v06/35-first-release-scope.md).
+See the [provider profile](docs/contracts/linux-provider-profile.md) for its format
+and the [systemd guide](packaging/systemd/README.md) for the service units and an
+example configuration.
 
-Создать новую базу можно командой `carosignd init-store /абсолютный/путь`;
-существующий файл при этом не перезаписывается. Чтобы указать расположение
-базы при проверке запуска, передайте `carosignd --config /абсолютный/путь`
-с файлом, содержащим строку `store=/абсолютный/путь/metadata.redb`.
-Для запуска службы нужны защищённые системные политика и профиль провайдера.
-Испытательный установочный состав с systemd и D-Bus подготовлен в
-[packaging/arch](packaging/arch/README.md); он не включает провайдера и не
-меняет системный PAM автоматически.
+Run `carosignd init-store /absolute/path` to create a metadata store. The command
+preserves any existing file at that path. To specify the store when checking
+service startup, run `carosignd --config /absolute/path` with a configuration
+file containing `store=/absolute/path/metadata.redb`.
 
-## Где что лежит
+The service requires a protected system policy and provider profile. The
+[Arch Linux preview package](packaging/arch/README.md) includes the systemd and
+D-Bus integration. Install a provider separately and configure PAM explicitly
+if you want to use fingerprint authentication.
 
-Общий указатель материалов находится в [docs/README.md](docs/README.md).
+## Repository layout
 
-| что | где |
-|---|---|
-| спецификация (нормативная) | `docs/specs/engineering/implementation-v06/` |
-| порядок заказов W00…W15 | `docs/specs/engineering/implementation-v06/16-implementation-workorders.md` |
-| схемы IPC для сборки (`.proto`) | `contracts/proto/carosign/` |
-| доменные типы, переходы и оценка доказательств | `crates/core/` |
-| выполнение операций, хранилище и адаптеры портов | `crates/runtime/` |
-| межпроцессный протокол и SDK провайдера | `crates/protocol/` |
-| службы, ресурсы и транспорт Linux | `crates/linux/` |
-| CLI, PAM и D-Bus-адаптер fprintd | `crates/clients/` |
-| тестовые реализации и фикстуры | `crates/testing/` |
-| диагностические Rust-утилиты | `crates/tools/` |
-| испытательный провайдер и утилита просмотра ограждений ресурсов | `crates/testing/carosign-mock-provider/` и `crates/tools/carosign-fence-inspect/`, отдельные Cargo workspace |
-| установочные файлы и сценарии сборки и тестирования | `packaging/` и `tools/` |
+The [documentation index](docs/README.md) provides an overview.
 
-## Сборка и проверки
+| Contents | Path |
+| --- | --- |
+| Normative specification | `docs/specs/engineering/implementation-v06/` |
+| Implementation work orders W00–W15 | `docs/specs/engineering/implementation-v06/16-implementation-workorders.md` |
+| IPC schemas used by the build | `contracts/proto/carosign/` |
+| Domain types, transitions, and evidence evaluation | `crates/core/` |
+| Operation execution, persistence, and port adapters | `crates/runtime/` |
+| IPC protocol and provider SDK | `crates/protocol/` |
+| Linux services, resources, and transport | `crates/linux/` |
+| Desktop app, CLI, PAM, and fprintd D-Bus adapter | `crates/clients/` |
+| Test implementations and fixtures | `crates/testing/` |
+| Rust diagnostics tools | `crates/tools/` |
+| Mock provider and resource-fence inspection tool, each in its own Cargo workspace | `crates/testing/carosign-mock-provider/` and `crates/tools/carosign-fence-inspect/` |
+| Packaging, build, and test scripts | `packaging/` and `tools/` |
 
-Команды выполняются из корня проекта.
+## Build and test
+
+Run these commands from the repository root.
 
 ```sh
-cargo build --offline                                   # хост
-cargo test --offline --workspace                        # проверки на хосте
-cargo clippy --offline --workspace --all-targets        # замечания линтера
-CAROSIGN_SYSROOT=/путь/к/aarch64-sysroot sh tools/build-arch.sh /путь/к/новому-пакету.pkg.tar.zst
+cargo build --offline
+cargo test --offline --workspace
+cargo clippy --offline --workspace --all-targets
+CAROSIGN_SYSROOT=/path/to/aarch64-sysroot sh tools/build-arch.sh /path/to/new-package.pkg.tar.zst
 ```
